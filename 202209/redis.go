@@ -25,7 +25,7 @@ func main() {
 	//fmt.Println("conn success", conn)
 
 	//2.写入数据
-	_, err = conn.Do("set", "name", "caotianhao曹")
+	_, err = conn.Do("set", "name", "caotianhao啊")
 	if err != nil {
 		fmt.Println("set err =", err)
 		return

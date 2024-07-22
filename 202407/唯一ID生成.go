@@ -6,11 +6,6 @@ import (
 	"time"
 )
 
-// IDGenerator 定义了一个生成唯一ID的接口
-//type IDGenerator interface {
-//	GetID() string
-//}
-
 // SimpleIDGenerator 是一个简单的ID生成器实现
 type SimpleIDGenerator struct {
 	counter uint64
@@ -26,7 +21,7 @@ func (idg *SimpleIDGenerator) GetID() string {
 	count := atomic.AddUint64(&idg.counter, 1)
 
 	// 拼接时间戳和计数器为ID
-	return fmt.Sprintf("%d-%d", ts, count)
+	return fmt.Sprintf("%d%02d", ts, count)
 }
 
 func main() {

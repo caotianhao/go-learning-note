@@ -43,7 +43,7 @@ func main() {
 		}
 	}
 
-	//time.Sleep(time.Second)
+	//time.Sleep(time.Millisecond)
 
 	fmt.Printf("f00 = %d\n", f00)
 	fmt.Printf("f12 = %d\n", f12)

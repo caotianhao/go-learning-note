@@ -9,7 +9,7 @@ import (
 
 func main() {
 	//用户名:密码@tcp(ip:端口)/数据库名
-	dsn := "root:824416@tcp(127.0.0.1:3306)/leetcode"
+	dsn := "root:123456@tcp(127.0.0.1:3306)/leetcode"
 	db, err := sql.Open("mysql", dsn)
 	//这里只检查 dsn 是否符合格式，当它解析不出对应的字段就会报这个错
 	if err != nil {

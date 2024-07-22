@@ -8,9 +8,10 @@ import (
 )
 
 func main() {
-	myFile, err := os.Open("D:/Golang/golangProject/gogogo/project02/test.txt")
+	myFile, err := os.Open("../project02/test.txt")
 	if err != nil {
 		fmt.Println("err =", err)
+		return
 	}
 
 	defer func(myFile *os.File) {
