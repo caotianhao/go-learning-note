@@ -1,0 +1,9 @@
+删东西
+git rm -r --cached xxx
+git commit -m "delete xxx"
+git push
+
+加东西
+git add xxx
+git commit -m "xxx"
+git push
