@@ -5,7 +5,7 @@ import (
 	"math/big"
 )
 
-var myFactorialMapBigInt = make(map[*big.Int]*big.Int, 0)
+var myFactorialMapBigInt = make(map[*big.Int]*big.Int)
 
 func factorial2(n *big.Int) {
 	var res = big.NewInt(1)

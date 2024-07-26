@@ -13,7 +13,7 @@ type LockFreeQueue struct {
 
 func NewQueue(n int32) *LockFreeQueue {
 	q := &LockFreeQueue{
-		queue: make([]interface{}, n+1, n+1),
+		queue: make([]interface{}, n+1),
 		len:   n + 1,
 	}
 	return q
