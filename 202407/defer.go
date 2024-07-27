@@ -2,14 +2,14 @@ package main
 
 import "fmt"
 
-func dd() {
+func defer1() {
 	i := 10
-	defer fmt.Println("defer1", i)
+	defer fmt.Printf("%d ", i)
 	i++
-	defer fmt.Println("defer2", i)
-	fmt.Println(i)
+	defer fmt.Printf("%d ", i)
+	fmt.Printf("%d ", i)
 }
 
 func main() {
-	dd() // 10
+	defer1() // 11 11 10
 }
