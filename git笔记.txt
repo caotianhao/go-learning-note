@@ -21,3 +21,6 @@ git push -u origin main
 
 ------ 升级到最新
 git update-git-for-windows
+
+------ 测试连通性
+ssh -T git@github.com
