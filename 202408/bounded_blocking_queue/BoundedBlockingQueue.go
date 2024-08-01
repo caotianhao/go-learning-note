@@ -1,4 +1,4 @@
-package main
+package bbqueue
 
 import (
 	"context"
@@ -45,8 +45,8 @@ func (q *BoundedBlockingQueue) Put(item interface{}) {
 	q.mu.Lock()                      // 加锁，保护共享资源
 	defer q.mu.Unlock()              // 解锁，保证在函数退出时解锁
 	for len(q.items) == q.capacity { // 如果队列已满
-		fmt.Println("队列已满，Put操作阻塞中...") // 打印提示信息
-		q.notFull.Wait()                // 等待队列有空位
+		fmt.Println("队列已满，Put操作阻塞中......") // 打印提示信息
+		q.notFull.Wait()                   // 等待队列有空位
 	}
 	q.items = append(q.items, item) // 将新元素加入队列
 	fmt.Printf("元素%v已加入队列\n", item) // 打印提示信息
@@ -58,8 +58,8 @@ func (q *BoundedBlockingQueue) Get() (item interface{}, err error) {
 	q.mu.Lock()             // 加锁，保护共享资源
 	defer q.mu.Unlock()     // 解锁，保证在函数退出时解锁
 	for len(q.items) == 0 { // 如果队列为空
-		fmt.Println("队列为空，Get操作阻塞中...") // 打印提示信息
-		q.notEmpty.Wait()               // 等待队列有元素
+		fmt.Println("队列为空，Get操作阻塞中......") // 打印提示信息
+		q.notEmpty.Wait()                  // 等待队列有元素
 	}
 	item = q.items[0]                // 从队列头部取出元素
 	q.items = q.items[1:]            // 移除取出的元素
