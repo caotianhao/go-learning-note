@@ -1,7 +1,7 @@
 package main
 
 import (
-	cal "gogogo/202408/gotraining/internal/calculator"
+	cal "gotraining/internal/calculator"
 	"testing"
 )
 

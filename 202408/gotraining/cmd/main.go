@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	cal "gogogo/202408/gotraining/internal/calculator"
-	"gogogo/202408/gotraining/pkg/utils"
+	cal "gotraining/internal/calculator"
+	"gotraining/pkg/utils"
 )
 
 func main() {
