@@ -2,10 +2,10 @@ package handler
 
 import (
 	"bufio"
+	"chatroom/controller"
+	"chatroom/model"
+	"chatroom/utils"
 	"fmt"
-	"gogogo/202408/chatroom/controller"
-	"gogogo/202408/chatroom/model"
-	"gogogo/202408/chatroom/utils"
 	"log"
 	"net"
 	"strconv"

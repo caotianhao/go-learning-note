@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"gogogo/202408/chatroom/model"
-	"gogogo/202408/chatroom/utils"
+	"chatroom/model"
+	"chatroom/utils"
 	"log"
 	"strconv"
 )

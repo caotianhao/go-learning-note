@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"gogogo/202408/chatroom/model"
+	"chatroom/model"
 	"sync"
 	"time"
 )

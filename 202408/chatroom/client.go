@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gogogo/202408/chatroom/utils"
+	"chatroom/utils"
 	"io"
 	"log"
 	"net"

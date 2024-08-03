@@ -1,9 +1,9 @@
 package main
 
 import (
-	"gogogo/202408/chatroom/controller"
-	"gogogo/202408/chatroom/handler"
-	"gogogo/202408/chatroom/utils"
+	"chatroom/controller"
+	"chatroom/handler"
+	"chatroom/utils"
 	"net"
 )
 
