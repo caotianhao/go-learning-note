@@ -9,7 +9,7 @@ func maxLengthWithCombineAB(a, b string) int {
 	queue := getPermutation(a, b)
 	res := math.MinInt64
 	for _, s := range queue {
-		res = maxP(res, longestP(s))
+		res = max(res, longestP(s))
 	}
 	return res
 }
@@ -53,13 +53,6 @@ func getPermutation(a, b string) (ans []string) {
 	}
 	dfs("", a, b)
 	return
-}
-
-func maxP(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
 }
 
 func main() {
