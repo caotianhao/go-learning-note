@@ -6,29 +6,36 @@ import (
 	"time"
 )
 
+var (
+	dictionary string
+	target     = "Hello World!"
+)
+
 func randomLetter() byte {
-	letters := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 	rand.NewSource(time.Now().UnixNano())
-	return letters[rand.Intn(52)]
+	return dictionary[rand.Intn(len(dictionary))]
 }
 
 func main() {
-	target := "HelloWorld"              // 目标字符串
-	result := make([]byte, len(target)) // 用于存放生成结果的切片
-	currentIndex := 0                   // 当前匹配的字母索引
+	for i := 32; i <= 126; i++ {
+		dictionary += string(rune(i))
+	}
+	result := make([]byte, len(target))
+	currentIndex := 0
+	cnt := 0
 
 	for currentIndex < len(target) {
 		letter := randomLetter()
+		cnt++
 
-		// 直接将生成的字母放入结果中
 		result[currentIndex] = letter
 		fmt.Printf("%s\n", string(result[:currentIndex+1]))
 
-		// 检查是否和目标字母匹配
 		if letter == target[currentIndex] {
-			currentIndex++ // 匹配成功，继续下一个字母
+			currentIndex++
 		}
-	}
 
-	//fmt.Println("成功生成字符串:", target)
+		time.Sleep(30 * time.Millisecond)
+	}
+	fmt.Println(cnt)
 }
