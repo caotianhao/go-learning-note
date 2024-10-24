@@ -55,9 +55,3 @@ code and improve myself.
 - ㅋㅋ, 이것은 운명이 그렇게 만든 것입니다. 나는 C와 Java를 좋아하지 않아서 그런지 
 선배의 프로젝트 요청으로 암호 알고리즘을 많이 배웠고 Go를 사용하여 구현했습니다.
 저는 Go가 매우 좋은 언어라고 생각하고, 매우 좋게 보고 있습니다. Delphi? 본 것 같아요!
-
-## 12. 冷静是属于男人的，爱才属于女人
-- todo, eh, what can i say, tt may?
-- maybe
-
-![202410/photo.jpg](202410/theLastPiece.jpg)
