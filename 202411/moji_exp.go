@@ -6,11 +6,11 @@ import (
 )
 
 const (
-	exp_three_free_youli = 10000 * 3                // 3次广告免费游历经验
-	exp_five_double_ad   = 10000 * 5 * 2            // 5次双倍广告经验
+	exp_three_free_youli = 10000 * 3                // 3 次广告免费游历经验
+	exp_five_double_ad   = 10000 * 5 * 2            // 5 次双倍广告经验
 	exp_jianghu          = 4000*4 + 5000*3 + 6000*3 // 江湖任务获取经验
-	exp_j4               = 3650                     // 深渊4每局经验
-	exp_main22           = 7750                     // 精英22关每局经验
+	exp_j4               = 3650                     // 深渊 4 每局经验
+	exp_main22           = 7550                     // 精英 22 每局经验
 
 	hp_everyday  = 5 * 24 // 每日自然恢复体力
 	hp_ad_double = -25    // 双倍广告消耗体力
@@ -18,21 +18,24 @@ const (
 	hp_friend    = 40     // 好友送体力
 	hp_ad        = 20     // 广告送体力
 	hp_activity  = 5      // 各种活动平均每天多一次体力
+	hp_leader    = 5      // 门派俸禄
 
 	all_hp = (hp_everyday +
 		hp_ad_double +
 		hp_jianghu +
 		hp_friend +
 		hp_ad +
-		hp_activity) / 5
+		hp_activity +
+		hp_leader) / 5
+
 	all_exp = exp_three_free_youli +
 		exp_five_double_ad +
 		exp_jianghu +
-		exp_j4*(all_hp-5) +
-		exp_main22*5
+		exp_j4*(all_hp-7) +
+		exp_main22*7
 
-	tie_min       = 2300
-	tie_cui_22    = -19200*5 - 21600*6 - 24000*6 //达到 22 阶 6 极彩还需要付出的铁
+	tie_min       = 2300 + 50
+	tie_cui_22    = -19200*5 - 21600*6 - 24000*6 // 达到 22 阶 6 极彩还需要付出的铁
 	tie_fenjie_22 = 620928                       // 分解 22 阶 6 极彩装备获得的铁
 )
 
@@ -100,7 +103,7 @@ func main() {
 
 		totalNeedExp := 0                  // 总共所需经验
 		needGrade := (grade - 1) * 10      // 需要达到的等级
-		tie_max := grade * 100             // 到达等级前每日通过分解获得的铁
+		tie_max := grade*100 + 50          // 到达等级前每日通过分解获得的铁
 		tie_avg := (tie_min + tie_max) / 2 // 简单计算平均每日获得的铁
 
 		for lv := 210; lv <= needGrade; lv++ {
