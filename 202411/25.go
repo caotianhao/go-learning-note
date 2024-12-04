@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 const (
 	XIAO_HONG_MAO = 2693.3
@@ -13,6 +15,7 @@ const (
 )
 
 func main() {
-	fmt.Println(XIAO_HONG_MAO + END_OF_LIFE + GOOD_FOUR_YEARS + END_OF_THE_WORLD + BEGIN_OF_THE_WORLD)
-	fmt.Println(82822.21)
+	don := XIAO_HONG_MAO + END_OF_LIFE + GOOD_FOUR_YEARS + END_OF_THE_WORLD + BEGIN_OF_THE_WORLD
+	fmt.Println(don)
+	fmt.Println(int(don / 0.005140))
 }
