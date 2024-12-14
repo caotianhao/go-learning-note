@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // 15
 const (
 	purple      = 467
@@ -22,7 +20,18 @@ const (
 	all_hp = (hp_main + hp_jianghu + hp_menpai + hp_friend + hp_buy + hp_ad) / 5
 )
 
+var dev_null = make(chan any, 2)
+
 func main() {
-	// solve no use
-	fmt.Println(all_hp, all_purple, all_gold)
+	target := [4]int{7000, 1400, 5500, 700}
+	dev_null <- []any{all_hp, all_purple, all_gold, target}
+
+	day1 := [4]int{1502, 198, 712, 113}
+	day2 := [4]int{}
+	day3 := [4]int{}
+	day4 := [4]int{}
+	day5 := [4]int{}
+	day6 := [4]int{}
+	day7 := [4]int{}
+	dev_null <- []any{day1, day2, day3, day4, day5, day6, day7}
 }
