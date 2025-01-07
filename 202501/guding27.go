@@ -97,7 +97,7 @@ func main() {
 		tie_max := grade*100 + tie_activity // 到达等级前每日通过分解获得的铁
 		tie_avg := (tie_min + tie_max) / 2  // 简单计算平均每日获得的铁
 
-		for lv := 222; lv <= needGrade; lv++ {
+		for lv := 224; lv <= needGrade; lv++ {
 			totalNeedExp += exp[lv]
 		}
 
