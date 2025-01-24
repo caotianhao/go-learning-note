@@ -27,6 +27,7 @@ const (
 	exp_j4          = 3650                     // 深渊 4 每局经验
 	exp_j5          = 4950                     // 深渊 5 每局经验
 	exp_j6          = 6450                     // 深渊 6 每局经验
+	exp_j7          = 7950                     // 深渊 7 每局经验
 	exp_m19         = 6025                     // 精英 19 每局经验
 	exp_m20         = 6550                     // 精英 20 每局经验
 	exp_m22         = 7550                     // 精英 22 每局经验
@@ -54,7 +55,7 @@ var (
 
 func fill() {
 	// solve unused variable hole
-	hole <- []any{all_exp, exp_j5, exp_j6, exp_m20}
+	hole <- []any{all_exp, exp_j5, exp_j6, exp_m20, exp_j7}
 
 	// fill iron
 	for i := 27; i < 39; i++ {
