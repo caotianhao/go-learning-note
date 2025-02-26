@@ -21,8 +21,8 @@ const (
 
 // 经验
 const (
-	exp_three_free  = 10400 * 3                // 3 次广告免费游历经验
-	exp_five_double = 9800 * 5 * 2             // 5 次双倍广告经验
+	exp_three_free  = 11275 * 3                // 3 次广告免费游历经验
+	exp_five_double = 10600 * 5 * 2            // 5 次双倍广告经验
 	exp_jianghu     = 4000*4 + 5000*3 + 6000*3 // 江湖任务获取经验
 	exp_j4          = 3650                     // 深渊 4 每局经验
 	exp_j5          = 4950                     // 深渊 5 每局经验
@@ -31,16 +31,17 @@ const (
 	exp_m19         = 6025                     // 精英 19 每局经验
 	exp_m20         = 6550                     // 精英 20 每局经验
 	exp_m22         = 7550                     // 精英 22 每局经验
+	exp_m25         = 9050
 
 	exp_base = exp_three_free + exp_five_double + exp_jianghu
-	all_exp  = exp_base + exp_j4*(all_hp-10) + exp_m22*7 + exp_m19*3
+	all_exp  = exp_base + exp_three_free*(all_hp-6) + exp_m25*6
 )
 
 // 铁
 const (
 	tie_activity  = 150
-	tie_min       = 2400 + tie_activity
-	tie_cui_22    = 12464 - 24000
+	tie_min       = 2600 + tie_activity
+	tie_now       = 130000
 	tie_fenjie_22 = (66192+56112)*2 + 83328 + 94752 + 16800
 
 	forever27 = 205360 * 4
@@ -55,7 +56,7 @@ var (
 
 func fill() {
 	// solve unused variable hole
-	hole <- []any{all_exp, exp_j5, exp_j6, exp_m20, exp_j7}
+	hole <- []any{all_exp, exp_j5, exp_j6, exp_m20, exp_j7, exp_m19, exp_m22, exp_j4}
 
 	// fill iron
 	for i := 27; i < 39; i++ {
@@ -98,14 +99,14 @@ func main() {
 		tie_max := grade*100 + tie_activity // 到达等级前每日通过分解获得的铁
 		tie_avg := (tie_min + tie_max) / 2  // 简单计算平均每日获得的铁
 
-		for lv := 224; lv <= needGrade; lv++ {
+		for lv := 240; lv <= needGrade; lv++ {
 			totalNeedExp += exp[lv]
 		}
 
 		needDays := totalNeedExp / all_exp
 		fmt.Printf("需要 %d 天等级够，", needDays)
 
-		all_tie := needDays*tie_avg + tie_fenjie_22 + tie_cui_22
+		all_tie := needDays*tie_avg + tie_fenjie_22 + tie_now
 
 		fmt.Printf("此时有 %d 铁，", all_tie)
 		fmt.Printf("离需要的 %d 铁还差 %d\n", iron[grade], iron[grade]-all_tie)
