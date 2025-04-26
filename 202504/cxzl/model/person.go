@@ -1,8 +1,9 @@
 package model
 
+import "math/big"
+
 type Direction string
 
-// noinspection all
 const (
 	DirectionUp    Direction = "up"
 	DirectionDown  Direction = "down"
@@ -10,27 +11,44 @@ const (
 	DirectionRight Direction = "right"
 )
 
-// noinspection all
 type level int
 
 type Person struct {
-	Hp               int    `json:"hp"`                 // 血量
-	Attack           int    `json:"attack"`             // 攻击
-	Defence          int    `json:"defence"`            // 防御
-	Shield           int    `json:"shield"`             // 护盾
-	ExpToNextLevel   int    `json:"exp_to_next_level"`  // 升到下一级所需的经验
-	Realm            string `json:"realm"`              // 当前境界
-	YellowKeys       int    `json:"yellow_keys"`        // 黄钥匙数量
-	BlueKeys         int    `json:"blue_keys"`          // 蓝钥匙数量
-	RedKeys          int    `json:"red_keys"`           // 红钥匙数量
-	GreenKeys        int    `json:"green_keys"`         // 绿钥匙数量
-	WallBreakingPick int    `json:"wall_breaking_pick"` // 破
-	EarthquakeScroll int    `json:"earthquake_scroll"`  // 震
-	SymmetricFlyer   int    `json:"symmetric_flyer"`    // 飞
-
-	Location [2]int    `json:"location"` // 人物位置
-	Facing   Direction `json:"facing"`   // 朝向
+	Hp             *big.Int
+	Attack         *big.Int
+	Defence        *big.Int
+	Shield         *big.Int
+	Exp            int
+	ExpToNextLevel int
+	Level          *Level
+	YellowKeys     int
+	BlueKeys       int
+	RedKeys        int
+	GreenKeys      int
+	Axe            int
+	Earthquake     int
+	Fly            int
+	Location       [2]int
+	Facing         Direction
 }
+
+type Level struct {
+	Name string
+	Exp  int
+}
+
+func (p *Person) UseEarthquake() {
+
+}
+
+func (p *Person) UseFly() {
+
+}
+
+var (
+	L1 = &Level{"陀神之境", 0}
+	L2 = &Level{"鸿沟神境", 150}
+)
 
 /*
 [
