@@ -48,19 +48,19 @@ func GetSeerElementRestraint2v2(atk1, atk2, def1, def2 int) float64 {
 	abd := GetSeerElementRestraint2v1(atk1, atk2, def2)
 
 	res := (abc + abd) / 2
-	if res > 4 {
-		return 4
+	if res > model.SeerElementRestraintResultMax {
+		return model.SeerElementRestraintResultMax
 	}
 	return res
 }
 
 func singleCalculate(res1, res2 float64) float64 {
-	var div float64 = 2
+	div := model.SeerElementRestraintResultRestraint
 	if res1 == model.SeerElementRestraintResultRestraint && res2 == model.SeerElementRestraintResultRestraint {
-		div = 1
+		div = model.SeerElementRestraintResultNormal
 	}
 	if res1 == model.SeerElementRestraintResultZero || res2 == model.SeerElementRestraintResultZero {
-		div = 4
+		div = model.SeerElementRestraintResultMax
 	}
 
 	return (res1 + res2) / div

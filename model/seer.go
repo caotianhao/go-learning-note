@@ -5,6 +5,7 @@ const (
 	SeerElementRestraintResultRestraint   float64 = 2
 	SeerElementRestraintResultRestrainted float64 = 0.5
 	SeerElementRestraintResultZero        float64 = 0
+	SeerElementRestraintResultMax         float64 = 4
 )
 
 const (
