@@ -3,7 +3,7 @@ package model
 const (
 	SeerElementRestraintResultNormal      float64 = 1
 	SeerElementRestraintResultRestraint   float64 = 2
-	SeerElementRestraintResultRestrainted float64 = 0.5
+	SeerElementRestraintResultRestrainted         = 1 / SeerElementRestraintResultRestraint
 	SeerElementRestraintResultZero        float64 = 0
 	SeerElementRestraintResultMax         float64 = 4
 )
