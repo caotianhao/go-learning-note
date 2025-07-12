@@ -1,4 +1,4 @@
-package main
+package model
 
 // Floor 楼层属性
 type Floor struct {
