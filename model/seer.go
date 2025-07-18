@@ -29,12 +29,12 @@ const (
 	SeerElementTypeAncient
 	SeerElementTypeEvil
 	SeerElementTypeNature
-	SeerElementTypeKing
-	SeerElementTypeChaos
-	SeerElementTypeGod
-	SeerElementTypeReincarnation
-	SeerElementTypeInsect
-	SeerElementTypeVoid
+	SeerElementTypeKing          = 221
+	SeerElementTypeChaos         = 222
+	SeerElementTypeGod           = 223
+	SeerElementTypeReincarnation = 224
+	SeerElementTypeInsect        = 225
+	SeerElementTypeVoid          = 226
 )
 
 var SeerElementTypeRestraint = map[int][]int{
