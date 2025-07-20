@@ -1,110 +1,70 @@
 package main
 
 import (
-	"fmt"
 	"gogogo/model"
 )
 
-func GetSeerElementRestraint1v1(atk, def int) float64 {
-	if atk == model.SeerElementTypeOrdinary || def == model.SeerElementTypeOrdinary {
-		return model.SeerElementRestraintResultNormal
+func GetSeerElementRestraint1v1(atk, def model.SeerElem) model.SeerElemKezhiRes {
+	if atk == model.SeerElemOrdinary || def == model.SeerElemOrdinary {
+		return model.SeerElemKezhiResNormal
 	}
 
-	for _, v := range model.SeerElementTypeRestraint[atk] {
+	for _, v := range model.SeerElemKe[atk] {
 		if v == def {
-			return model.SeerElementRestraintResultRestraint
+			return model.SeerElemKezhiResKe
 		}
 	}
 
-	for _, v := range model.SeerElementTypeRestrainted[atk] {
+	for _, v := range model.SeerElemKed[atk] {
 		if v == def {
-			return model.SeerElementRestraintResultRestrainted
+			return model.SeerElemKezhiResKed
 		}
 	}
 
-	if zero, ok := model.SeerElementTypeZero[atk]; ok && zero == def {
-		return model.SeerElementRestraintResultZero
+	if zero, ok := model.SeerElemInvalid[atk]; ok && zero == def {
+		return model.SeerElemKezhiResZero
 	}
 
-	return model.SeerElementRestraintResultNormal
+	return model.SeerElemKezhiResNormal
 }
 
-func GetSeerElementRestraint1v2(atk, def1, def2 int) float64 {
+func GetSeerElementRestraint1v2(atk, def1, def2 model.SeerElem) model.SeerElemKezhiRes {
 	ab := GetSeerElementRestraint1v1(atk, def1)
 	ac := GetSeerElementRestraint1v1(atk, def2)
 
 	return singleCalculate(ab, ac)
 }
 
-func GetSeerElementRestraint2v1(atk1, atk2, def int) float64 {
+func GetSeerElementRestraint2v1(atk1, atk2, def model.SeerElem) model.SeerElemKezhiRes {
 	ac := GetSeerElementRestraint1v1(atk1, def)
 	bc := GetSeerElementRestraint1v1(atk2, def)
 
 	return singleCalculate(ac, bc)
 }
 
-func GetSeerElementRestraint2v2(atk1, atk2, def1, def2 int) float64 {
+func GetSeerElementRestraint2v2(atk1, atk2, def1, def2 model.SeerElem) model.SeerElemKezhiRes {
 	abc := GetSeerElementRestraint2v1(atk1, atk2, def1)
 	abd := GetSeerElementRestraint2v1(atk1, atk2, def2)
 
 	res := (abc + abd) / 2
-	if res > model.SeerElementRestraintResultMax {
-		return model.SeerElementRestraintResultMax
+	if res > model.SeerElemKezhiResMax {
+		return model.SeerElemKezhiResMax
 	}
 	return res
 }
 
-func singleCalculate(res1, res2 float64) float64 {
-	div := model.SeerElementRestraintResultRestraint
-	if res1 == model.SeerElementRestraintResultRestraint && res2 == model.SeerElementRestraintResultRestraint {
-		div = model.SeerElementRestraintResultNormal
+func singleCalculate(res1, res2 model.SeerElemKezhiRes) model.SeerElemKezhiRes {
+	div := model.SeerElemKezhiResKe
+	if res1 == model.SeerElemKezhiResKe && res2 == model.SeerElemKezhiResKe {
+		div = model.SeerElemKezhiResNormal
 	}
-	if res1 == model.SeerElementRestraintResultZero || res2 == model.SeerElementRestraintResultZero {
-		div = model.SeerElementRestraintResultMax
+	if res1 == model.SeerElemKezhiResZero || res2 == model.SeerElemKezhiResZero {
+		div = model.SeerElemKezhiResMax
 	}
 
 	return (res1 + res2) / div
 }
 
 func main() {
-	fmt.Println(GetSeerElementRestraint2v2(
-		model.SeerElementTypeHoly, model.SeerElementTypeNature,
-		model.SeerElementTypeElectricity, model.SeerElementTypeFire,
-	) == 4)
-	fmt.Println(GetSeerElementRestraint2v2(
-		model.SeerElementTypeElectricity, model.SeerElementTypeFire,
-		model.SeerElementTypeHoly, model.SeerElementTypeNature,
-	) == 0.5)
-	fmt.Println(GetSeerElementRestraint2v2(
-		model.SeerElementTypeChaos, model.SeerElementTypeDragon,
-		model.SeerElementTypeIce, model.SeerElementTypeSuper,
-	) == 2.5)
-	fmt.Println(GetSeerElementRestraint2v2(
-		model.SeerElementTypeIce, model.SeerElementTypeSuper,
-		model.SeerElementTypeChaos, model.SeerElementTypeDragon,
-	) == 0.875)
-	fmt.Println(GetSeerElementRestraint1v2(
-		model.SeerElementTypeDimension,
-		model.SeerElementTypeFly, model.SeerElementTypeSuper,
-	) == 4)
-	fmt.Println(GetSeerElementRestraint2v1(
-		model.SeerElementTypeFly, model.SeerElementTypeSuper,
-		model.SeerElementTypeDimension,
-	) == 0.75)
-	fmt.Println(GetSeerElementRestraint2v2(
-		model.SeerElementTypeHoly, model.SeerElementTypeFly,
-		model.SeerElementTypeGround, model.SeerElementTypeMystery,
-	) == 0.875)
-	fmt.Println(GetSeerElementRestraint2v2(
-		model.SeerElementTypeGround, model.SeerElementTypeMystery,
-		model.SeerElementTypeHoly, model.SeerElementTypeFly,
-	) == 0.75)
-	fmt.Println(GetSeerElementRestraint1v2(
-		model.SeerElementTypeGrass,
-		model.SeerElementTypeLight, model.SeerElementTypeMystery,
-	) == 1.5)
-	fmt.Println(GetSeerElementRestraint2v1(
-		model.SeerElementTypeLight, model.SeerElementTypeMystery,
-		model.SeerElementTypeGrass,
-	) == 0.25)
+
 }

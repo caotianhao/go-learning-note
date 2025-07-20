@@ -1,104 +1,108 @@
 package model
 
-const (
-	SeerElementRestraintResultNormal      float64 = 1
-	SeerElementRestraintResultRestraint   float64 = 2
-	SeerElementRestraintResultRestrainted         = 1 / SeerElementRestraintResultRestraint
-	SeerElementRestraintResultZero        float64 = 0
-	SeerElementRestraintResultMax         float64 = 4
-)
+type SeerElemKezhiRes float64
 
 const (
-	SeerElementTypeGrass = iota + 1
-	SeerElementTypeWater
-	SeerElementTypeFire
-	SeerElementTypeFly
-	SeerElementTypeElectricity
-	SeerElementTypeMachine
-	SeerElementTypeGround
-	SeerElementTypeOrdinary
-	SeerElementTypeIce
-	SeerElementTypeSuper
-	SeerElementTypeWar
-	SeerElementTypeLight
-	SeerElementTypeDark
-	SeerElementTypeMystery
-	SeerElementTypeDragon
-	SeerElementTypeHoly
-	SeerElementTypeDimension
-	SeerElementTypeAncient
-	SeerElementTypeEvil
-	SeerElementTypeNature
-	SeerElementTypeKing          = 221
-	SeerElementTypeChaos         = 222
-	SeerElementTypeGod           = 223
-	SeerElementTypeReincarnation = 224
-	SeerElementTypeInsect        = 225
-	SeerElementTypeVoid          = 226
+	SeerElemKezhiResNormal SeerElemKezhiRes = 1
+	SeerElemKezhiResKe     SeerElemKezhiRes = 2
+	SeerElemKezhiResKed    SeerElemKezhiRes = 0.5
+	SeerElemKezhiResZero   SeerElemKezhiRes = 0
+	SeerElemKezhiResMax    SeerElemKezhiRes = 4
 )
 
-var SeerElementTypeRestraint = map[int][]int{
-	SeerElementTypeGrass:         {SeerElementTypeWater, SeerElementTypeGround, SeerElementTypeLight},
-	SeerElementTypeWater:         {SeerElementTypeFire, SeerElementTypeGround},
-	SeerElementTypeFire:          {SeerElementTypeGrass, SeerElementTypeMachine, SeerElementTypeIce},
-	SeerElementTypeFly:           {SeerElementTypeGrass, SeerElementTypeWar, SeerElementTypeInsect},
-	SeerElementTypeElectricity:   {SeerElementTypeWater, SeerElementTypeFly, SeerElementTypeDark, SeerElementTypeDimension, SeerElementTypeChaos, SeerElementTypeVoid},
-	SeerElementTypeMachine:       {SeerElementTypeIce, SeerElementTypeWar, SeerElementTypeAncient, SeerElementTypeEvil, SeerElementTypeGod},
-	SeerElementTypeGround:        {SeerElementTypeFire, SeerElementTypeElectricity, SeerElementTypeMachine, SeerElementTypeKing, SeerElementTypeReincarnation},
-	SeerElementTypeIce:           {SeerElementTypeGrass, SeerElementTypeFly, SeerElementTypeGround, SeerElementTypeAncient, SeerElementTypeDimension, SeerElementTypeReincarnation, SeerElementTypeInsect},
-	SeerElementTypeSuper:         {SeerElementTypeWar, SeerElementTypeMystery, SeerElementTypeNature},
-	SeerElementTypeWar:           {SeerElementTypeMachine, SeerElementTypeIce, SeerElementTypeDragon, SeerElementTypeHoly},
-	SeerElementTypeLight:         {SeerElementTypeSuper, SeerElementTypeDark, SeerElementTypeInsect},
-	SeerElementTypeDark:          {SeerElementTypeSuper, SeerElementTypeDark, SeerElementTypeDimension},
-	SeerElementTypeMystery:       {SeerElementTypeElectricity, SeerElementTypeMystery, SeerElementTypeHoly, SeerElementTypeNature, SeerElementTypeKing, SeerElementTypeGod, SeerElementTypeReincarnation},
-	SeerElementTypeDragon:        {SeerElementTypeIce, SeerElementTypeDragon, SeerElementTypeHoly, SeerElementTypeEvil},
-	SeerElementTypeHoly:          {SeerElementTypeGrass, SeerElementTypeFire, SeerElementTypeWater, SeerElementTypeElectricity, SeerElementTypeIce, SeerElementTypeAncient, SeerElementTypeVoid},
-	SeerElementTypeDimension:     {SeerElementTypeFly, SeerElementTypeMachine, SeerElementTypeSuper, SeerElementTypeEvil, SeerElementTypeNature, SeerElementTypeInsect, SeerElementTypeVoid},
-	SeerElementTypeAncient:       {SeerElementTypeGrass, SeerElementTypeFly, SeerElementTypeMystery, SeerElementTypeDragon, SeerElementTypeVoid},
-	SeerElementTypeEvil:          {SeerElementTypeLight, SeerElementTypeDark, SeerElementTypeMystery, SeerElementTypeDimension, SeerElementTypeNature},
-	SeerElementTypeNature:        {SeerElementTypeGrass, SeerElementTypeWater, SeerElementTypeFire, SeerElementTypeFly, SeerElementTypeElectricity, SeerElementTypeGround, SeerElementTypeLight, SeerElementTypeKing, SeerElementTypeReincarnation},
-	SeerElementTypeKing:          {SeerElementTypeWar, SeerElementTypeDark, SeerElementTypeDimension, SeerElementTypeEvil},
-	SeerElementTypeChaos:         {SeerElementTypeFly, SeerElementTypeIce, SeerElementTypeMystery, SeerElementTypeDimension, SeerElementTypeEvil, SeerElementTypeNature, SeerElementTypeGod},
-	SeerElementTypeGod:           {SeerElementTypeWater, SeerElementTypeFire, SeerElementTypeGrass, SeerElementTypeElectricity, SeerElementTypeIce, SeerElementTypeAncient, SeerElementTypeEvil, SeerElementTypeChaos},
-	SeerElementTypeReincarnation: {SeerElementTypeLight, SeerElementTypeDark, SeerElementTypeHoly, SeerElementTypeDimension, SeerElementTypeEvil, SeerElementTypeChaos},
-	SeerElementTypeInsect:        {SeerElementTypeGrass, SeerElementTypeGround, SeerElementTypeWar, SeerElementTypeChaos, SeerElementTypeInsect},
-	SeerElementTypeVoid:          {SeerElementTypeSuper, SeerElementTypeWar, SeerElementTypeLight, SeerElementTypeMystery, SeerElementTypeNature, SeerElementTypeReincarnation},
+type SeerElem uint16
+
+const (
+	SeerElemGrass SeerElem = iota + 1
+	SeerElemWater
+	SeerElemFire
+	SeerElemFly
+	SeerElemElectricity
+	SeerElemMachine
+	SeerElemGround
+	SeerElemOrdinary
+	SeerElemIce
+	SeerElemSuper
+	SeerElemWar
+	SeerElemLight
+	SeerElemDark
+	SeerElemMystery
+	SeerElemDragon
+	SeerElemHoly
+	SeerElemDimension
+	SeerElemAncient
+	SeerElemEvil
+	SeerElemNature
+	SeerElemKing
+	SeerElemChaos
+	SeerElemGod
+	SeerElemReincarnation
+	SeerElemInsect
+	SeerElemVoid
+)
+
+var SeerElemKe = map[SeerElem][]SeerElem{
+	SeerElemGrass:         {SeerElemWater, SeerElemGround, SeerElemLight},
+	SeerElemWater:         {SeerElemFire, SeerElemGround},
+	SeerElemFire:          {SeerElemGrass, SeerElemMachine, SeerElemIce},
+	SeerElemFly:           {SeerElemGrass, SeerElemWar, SeerElemInsect},
+	SeerElemElectricity:   {SeerElemWater, SeerElemFly, SeerElemDark, SeerElemDimension, SeerElemChaos, SeerElemVoid},
+	SeerElemMachine:       {SeerElemIce, SeerElemWar, SeerElemAncient, SeerElemEvil, SeerElemGod},
+	SeerElemGround:        {SeerElemFire, SeerElemElectricity, SeerElemMachine, SeerElemKing, SeerElemReincarnation},
+	SeerElemIce:           {SeerElemGrass, SeerElemFly, SeerElemGround, SeerElemAncient, SeerElemDimension, SeerElemReincarnation, SeerElemInsect},
+	SeerElemSuper:         {SeerElemWar, SeerElemMystery, SeerElemNature},
+	SeerElemWar:           {SeerElemMachine, SeerElemIce, SeerElemDragon, SeerElemHoly},
+	SeerElemLight:         {SeerElemSuper, SeerElemDark, SeerElemInsect},
+	SeerElemDark:          {SeerElemSuper, SeerElemDark, SeerElemDimension},
+	SeerElemMystery:       {SeerElemElectricity, SeerElemMystery, SeerElemHoly, SeerElemNature, SeerElemKing, SeerElemGod, SeerElemReincarnation},
+	SeerElemDragon:        {SeerElemIce, SeerElemDragon, SeerElemHoly, SeerElemEvil},
+	SeerElemHoly:          {SeerElemGrass, SeerElemFire, SeerElemWater, SeerElemElectricity, SeerElemIce, SeerElemAncient, SeerElemVoid},
+	SeerElemDimension:     {SeerElemFly, SeerElemMachine, SeerElemSuper, SeerElemEvil, SeerElemNature, SeerElemInsect, SeerElemVoid},
+	SeerElemAncient:       {SeerElemGrass, SeerElemFly, SeerElemMystery, SeerElemDragon, SeerElemVoid},
+	SeerElemEvil:          {SeerElemLight, SeerElemDark, SeerElemMystery, SeerElemDimension, SeerElemNature},
+	SeerElemNature:        {SeerElemGrass, SeerElemWater, SeerElemFire, SeerElemFly, SeerElemElectricity, SeerElemGround, SeerElemLight, SeerElemKing, SeerElemReincarnation},
+	SeerElemKing:          {SeerElemWar, SeerElemDark, SeerElemDimension, SeerElemEvil},
+	SeerElemChaos:         {SeerElemFly, SeerElemIce, SeerElemMystery, SeerElemDimension, SeerElemEvil, SeerElemNature, SeerElemGod},
+	SeerElemGod:           {SeerElemWater, SeerElemFire, SeerElemGrass, SeerElemElectricity, SeerElemIce, SeerElemAncient, SeerElemEvil, SeerElemChaos},
+	SeerElemReincarnation: {SeerElemLight, SeerElemDark, SeerElemHoly, SeerElemDimension, SeerElemEvil, SeerElemChaos},
+	SeerElemInsect:        {SeerElemGrass, SeerElemGround, SeerElemWar, SeerElemChaos, SeerElemInsect},
+	SeerElemVoid:          {SeerElemSuper, SeerElemWar, SeerElemLight, SeerElemMystery, SeerElemNature, SeerElemReincarnation},
 }
 
-var SeerElementTypeRestrainted = map[int][]int{
-	SeerElementTypeGrass:         {SeerElementTypeFire, SeerElementTypeFly, SeerElementTypeMachine, SeerElementTypeGod, SeerElementTypeHoly, SeerElementTypeGrass, SeerElementTypeChaos, SeerElementTypeAncient},
-	SeerElementTypeWater:         {SeerElementTypeGrass, SeerElementTypeWater, SeerElementTypeHoly, SeerElementTypeNature, SeerElementTypeChaos, SeerElementTypeGod},
-	SeerElementTypeFire:          {SeerElementTypeWater, SeerElementTypeFire, SeerElementTypeHoly, SeerElementTypeNature, SeerElementTypeChaos, SeerElementTypeGod},
-	SeerElementTypeFly:           {SeerElementTypeElectricity, SeerElementTypeMachine, SeerElementTypeDimension, SeerElementTypeEvil, SeerElementTypeNature, SeerElementTypeChaos},
-	SeerElementTypeElectricity:   {SeerElementTypeGrass, SeerElementTypeElectricity, SeerElementTypeMystery, SeerElementTypeHoly, SeerElementTypeNature, SeerElementTypeGod},
-	SeerElementTypeMachine:       {SeerElementTypeWater, SeerElementTypeFire, SeerElementTypeElectricity, SeerElementTypeMachine, SeerElementTypeDimension},
-	SeerElementTypeGround:        {SeerElementTypeGrass, SeerElementTypeSuper, SeerElementTypeDark, SeerElementTypeDragon, SeerElementTypeHoly, SeerElementTypeNature, SeerElementTypeGod, SeerElementTypeInsect},
-	SeerElementTypeIce:           {SeerElementTypeWater, SeerElementTypeFire, SeerElementTypeMachine, SeerElementTypeIce, SeerElementTypeGod, SeerElementTypeChaos, SeerElementTypeHoly},
-	SeerElementTypeSuper:         {SeerElementTypeMachine, SeerElementTypeSuper, SeerElementTypeInsect},
-	SeerElementTypeWar:           {SeerElementTypeSuper, SeerElementTypeWar, SeerElementTypeDark, SeerElementTypeEvil, SeerElementTypeKing},
-	SeerElementTypeLight:         {SeerElementTypeMachine, SeerElementTypeIce, SeerElementTypeLight, SeerElementTypeHoly, SeerElementTypeEvil, SeerElementTypeNature, SeerElementTypeGod, SeerElementTypeReincarnation, SeerElementTypeVoid},
-	SeerElementTypeDark:          {SeerElementTypeMachine, SeerElementTypeIce, SeerElementTypeLight, SeerElementTypeHoly, SeerElementTypeEvil, SeerElementTypeGod},
-	SeerElementTypeMystery:       {SeerElementTypeGround, SeerElementTypeWar, SeerElementTypeEvil, SeerElementTypeChaos, SeerElementTypeInsect},
-	SeerElementTypeDragon:        {SeerElementTypeGrass, SeerElementTypeWater, SeerElementTypeFire, SeerElementTypeElectricity, SeerElementTypeAncient, SeerElementTypeInsect},
-	SeerElementTypeHoly:          {SeerElementTypeWar, SeerElementTypeMystery, SeerElementTypeDragon, SeerElementTypeReincarnation},
-	SeerElementTypeDimension:     {SeerElementTypeIce, SeerElementTypeKing, SeerElementTypeChaos, SeerElementTypeGod, SeerElementTypeReincarnation},
-	SeerElementTypeAncient:       {SeerElementTypeMachine, SeerElementTypeIce, SeerElementTypeKing, SeerElementTypeReincarnation},
-	SeerElementTypeEvil:          {SeerElementTypeMachine, SeerElementTypeIce, SeerElementTypeSuper, SeerElementTypeHoly, SeerElementTypeKing, SeerElementTypeChaos, SeerElementTypeReincarnation},
-	SeerElementTypeNature:        {SeerElementTypeMachine, SeerElementTypeSuper, SeerElementTypeWar, SeerElementTypeDark, SeerElementTypeMystery, SeerElementTypeDimension, SeerElementTypeEvil, SeerElementTypeChaos, SeerElementTypeVoid},
-	SeerElementTypeKing:          {SeerElementTypeSuper, SeerElementTypeNature, SeerElementTypeInsect},
-	SeerElementTypeChaos:         {SeerElementTypeElectricity, SeerElementTypeMachine, SeerElementTypeWar, SeerElementTypeReincarnation},
-	SeerElementTypeGod:           {SeerElementTypeMachine, SeerElementTypeWar, SeerElementTypeDragon},
-	SeerElementTypeReincarnation: {SeerElementTypeIce, SeerElementTypeSuper, SeerElementTypeNature, SeerElementTypeVoid},
-	SeerElementTypeInsect:        {SeerElementTypeWater, SeerElementTypeFire, SeerElementTypeIce, SeerElementTypeLight},
-	SeerElementTypeVoid:          {SeerElementTypeFly, SeerElementTypeDark, SeerElementTypeHoly, SeerElementTypeDimension},
+var SeerElemKed = map[SeerElem][]SeerElem{
+	SeerElemGrass:         {SeerElemFire, SeerElemFly, SeerElemMachine, SeerElemGod, SeerElemHoly, SeerElemGrass, SeerElemChaos, SeerElemAncient},
+	SeerElemWater:         {SeerElemGrass, SeerElemWater, SeerElemHoly, SeerElemNature, SeerElemChaos, SeerElemGod},
+	SeerElemFire:          {SeerElemWater, SeerElemFire, SeerElemHoly, SeerElemNature, SeerElemChaos, SeerElemGod},
+	SeerElemFly:           {SeerElemElectricity, SeerElemMachine, SeerElemDimension, SeerElemEvil, SeerElemNature, SeerElemChaos},
+	SeerElemElectricity:   {SeerElemGrass, SeerElemElectricity, SeerElemMystery, SeerElemHoly, SeerElemNature, SeerElemGod},
+	SeerElemMachine:       {SeerElemWater, SeerElemFire, SeerElemElectricity, SeerElemMachine, SeerElemDimension},
+	SeerElemGround:        {SeerElemGrass, SeerElemSuper, SeerElemDark, SeerElemDragon, SeerElemHoly, SeerElemNature, SeerElemGod, SeerElemInsect},
+	SeerElemIce:           {SeerElemWater, SeerElemFire, SeerElemMachine, SeerElemIce, SeerElemGod, SeerElemChaos, SeerElemHoly},
+	SeerElemSuper:         {SeerElemMachine, SeerElemSuper, SeerElemInsect},
+	SeerElemWar:           {SeerElemSuper, SeerElemWar, SeerElemDark, SeerElemEvil, SeerElemKing},
+	SeerElemLight:         {SeerElemMachine, SeerElemIce, SeerElemLight, SeerElemHoly, SeerElemEvil, SeerElemNature, SeerElemGod, SeerElemReincarnation, SeerElemVoid},
+	SeerElemDark:          {SeerElemMachine, SeerElemIce, SeerElemLight, SeerElemHoly, SeerElemEvil, SeerElemGod},
+	SeerElemMystery:       {SeerElemGround, SeerElemWar, SeerElemEvil, SeerElemChaos, SeerElemInsect},
+	SeerElemDragon:        {SeerElemGrass, SeerElemWater, SeerElemFire, SeerElemElectricity, SeerElemAncient, SeerElemInsect},
+	SeerElemHoly:          {SeerElemWar, SeerElemMystery, SeerElemDragon, SeerElemReincarnation},
+	SeerElemDimension:     {SeerElemIce, SeerElemKing, SeerElemChaos, SeerElemGod, SeerElemReincarnation},
+	SeerElemAncient:       {SeerElemMachine, SeerElemIce, SeerElemKing, SeerElemReincarnation},
+	SeerElemEvil:          {SeerElemMachine, SeerElemIce, SeerElemSuper, SeerElemHoly, SeerElemKing, SeerElemChaos, SeerElemReincarnation},
+	SeerElemNature:        {SeerElemMachine, SeerElemSuper, SeerElemWar, SeerElemDark, SeerElemMystery, SeerElemDimension, SeerElemEvil, SeerElemChaos, SeerElemVoid},
+	SeerElemKing:          {SeerElemSuper, SeerElemNature, SeerElemInsect},
+	SeerElemChaos:         {SeerElemElectricity, SeerElemMachine, SeerElemWar, SeerElemReincarnation},
+	SeerElemGod:           {SeerElemMachine, SeerElemWar, SeerElemDragon},
+	SeerElemReincarnation: {SeerElemIce, SeerElemSuper, SeerElemNature, SeerElemVoid},
+	SeerElemInsect:        {SeerElemWater, SeerElemFire, SeerElemIce, SeerElemLight},
+	SeerElemVoid:          {SeerElemFly, SeerElemDark, SeerElemHoly, SeerElemDimension},
 }
 
-var SeerElementTypeZero = map[int]int{
-	SeerElementTypeLight:       SeerElementTypeGrass,
-	SeerElementTypeEvil:        SeerElementTypeGod,
-	SeerElementTypeElectricity: SeerElementTypeGround,
-	SeerElementTypeGround:      SeerElementTypeFly,
-	SeerElementTypeDimension:   SeerElementTypeDark,
-	SeerElementTypeSuper:       SeerElementTypeLight,
-	SeerElementTypeChaos:       SeerElementTypeVoid,
+var SeerElemInvalid = map[SeerElem]SeerElem{
+	SeerElemLight:       SeerElemGrass,
+	SeerElemEvil:        SeerElemGod,
+	SeerElemElectricity: SeerElemGround,
+	SeerElemGround:      SeerElemFly,
+	SeerElemDimension:   SeerElemDark,
+	SeerElemSuper:       SeerElemLight,
+	SeerElemChaos:       SeerElemVoid,
 }
