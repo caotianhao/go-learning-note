@@ -25,9 +25,6 @@ const (
 )
 
 const (
-	lvTarget  = lvMax / 10 * 10
-	expTarget = expUpgradePerLv * (lvTarget - lvNow)
-
 	exp0to9    = 10 * expSucceed
 	exp9to24   = (15 * 60 / 45) * expSucceed
 	expJianghu = 4000*4 + 5000*3 + 6000*3
@@ -47,7 +44,7 @@ func main() {
 
 	startDate := time.Now()
 
-	for days := 1; days < 365; days++ {
+	for days := 1; ; days++ {
 		curLv := lvNow + (days*expPerDay)/expUpgradePerLv
 		if curLv > lvMax {
 			break
