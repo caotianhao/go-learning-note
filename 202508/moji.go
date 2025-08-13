@@ -7,11 +7,12 @@ import (
 
 const (
 	expSucceed      = 15702
-	expFail         = 15408
+	expFailNormal   = 15408
+	expFailHard     = 15408
 	expUpgradePerLv = 1300000
 
 	lvMax = 449
-	lvNow = 344
+	lvNow = 345
 
 	hpAdNormalDouble = -25
 	hpAdHardDouble   = -25
@@ -25,14 +26,19 @@ const (
 )
 
 const (
-	exp0to9    = 10 * expSucceed
-	exp9to24   = (15 * 60 / 45) * expSucceed
-	expJianghu = 4000*4 + 5000*3 + 6000*3
-	expDouble  = (hpAdHardDouble + hpAdNormalDouble) / -5 * expFail
-	expOther   = (hpLeader + hpAd + hpLogin60min + hpFriend +
+	exp0to9         = 10 * expSucceed
+	exp9to24        = (15 * 60 / 45) * expSucceed
+	expJianghu      = 4000*4 + 5000*3 + 6000*3
+	expDoubleNormal = -hpAdNormalDouble / 5 * expFailNormal * 2
+	expDoubleHard   = -hpAdHardDouble / 5 * expFailHard * 2
+	expOther        = (hpLeader + hpAd + hpLogin60min + hpFriend +
 		hpAdHardDouble + hpAdNormalDouble) / 5 * expSucceed
 
-	expPerDay = exp0to9 + exp9to24 + expJianghu + expDouble + expOther
+	expNatural = exp0to9 + exp9to24
+	expDouble  = expDoubleNormal + expDoubleHard
+	expEx      = expJianghu + expOther
+
+	expPerDay = expNatural + expDouble + expEx
 )
 
 func main() {
