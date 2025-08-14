@@ -12,7 +12,7 @@ const (
 	expUpgradePerLv = 1300000
 
 	lvMax = 449
-	lvNow = 345
+	lvNow = 346
 
 	hpAdNormalDouble = -25
 	hpAdHardDouble   = -25
@@ -22,7 +22,7 @@ const (
 	hpAd             = 40
 
 	ironBreak = 190000
-	ironNow   = 77852
+	ironNow   = 85872
 )
 
 const (
