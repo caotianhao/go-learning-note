@@ -11,8 +11,8 @@ const (
 	expFailHard     = 15119
 	expUpgradePerLv = 1300000
 
-	lvMax = 449
-	lvNow = 355
+	lvMax = 459
+	lvNow = 358
 
 	hpAdNormalDouble = -25
 	hpAdHardDouble   = -25
@@ -22,7 +22,12 @@ const (
 	hpAd             = 40
 
 	ironBreak = 190006
-	ironNow   = 120992
+	ironNow   = 140322
+
+	equipLv = 100
+
+	cui35   = 302000
+	cuiDiff = 12080
 )
 
 const (
@@ -42,10 +47,10 @@ const (
 )
 
 func main() {
-	cuiFromGold2MaxSingle := make([]int, 51)
-	cuiFromGold2MaxSingle[35] = 54000 + 113000 + 135000
-	for i := 36; i < 51; i++ {
-		cuiFromGold2MaxSingle[i] += (i-35)*12080 + cuiFromGold2MaxSingle[35]
+	cuiFromGold2MaxSingle := make([]int, equipLv)
+	cuiFromGold2MaxSingle[35] = cui35
+	for i := 36; i < equipLv; i++ {
+		cuiFromGold2MaxSingle[i] += (i-35)*cuiDiff + cuiFromGold2MaxSingle[35]
 	}
 
 	startDate := time.Now()
@@ -56,7 +61,7 @@ func main() {
 			break
 		}
 		tmp := curLv/10 + 1
-		if tmp > 50 {
+		if tmp > equipLv-1 {
 			break
 		}
 
