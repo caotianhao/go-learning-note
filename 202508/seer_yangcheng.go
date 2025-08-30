@@ -25,6 +25,7 @@ func fillAndCheckYcMap() []int {
 		{4648, 4647, 5000, 4649, 3512, 3291, 4732, 4706, 4633, 4658, 4628, 4487},
 		{4371, 4377, 4442, 4599, 4618, 4484, 4254, 4143, 3844, 3894, 3699, 3573},
 		{2987, 3056, 3328, 3414, 3567, 3866, 4606, 4338, 4463, 3437, 3463, 3460},
+		{4661, 3979, 3945, 4430, 3577, 4163, 3670, 4387, 3637, 4521, 4761, 4712}, // 8
 	}
 
 	for i := 0; i < len(ycAll); i++ {
@@ -66,10 +67,10 @@ func listYcMap() {
 func main() {
 	res := fillAndCheckYcMap()
 	if len(res) != 0 {
-		fmt.Println(colorRed + "*******************************" + colorReset)
+		fmt.Println(colorRed + "**********************************************" + colorReset)
 		fmt.Printf(colorRed+"duplicate key: %v"+colorReset+"\n", res)
-		fmt.Println(colorRed + "*******************************" + colorReset)
+		fmt.Println(colorRed + "**********************************************" + colorReset)
+	} else {
+		listYcMap()
 	}
-
-	listYcMap()
 }
