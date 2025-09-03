@@ -9,7 +9,7 @@ const (
 	expSucceed      = 16274
 	expFailNormal   = 15119
 	expFailHard     = 15119
-	expUpgradePerLv = 1300000
+	expUpgradePerLv = 1500000
 
 	lvMax = 459
 	lvNow = 363
