@@ -21,7 +21,7 @@ const (
 	hpLeader         = 5
 	hpAd             = 40
 
-	ironBreak = 190006
+	ironBreak = 193328
 	ironNow   = 157362
 
 	equipLv = 100
