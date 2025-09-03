@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	expSucceed      = 15986
+	expSucceed      = 16274
 	expFailNormal   = 15119
 	expFailHard     = 15119
 	expUpgradePerLv = 1300000
@@ -22,7 +22,7 @@ const (
 	hpAd             = 40
 
 	ironBreak = 190006
-	ironNow   = 153562
+	ironNow   = 157362
 
 	equipLv = 100
 
