@@ -1,2 +1,4 @@
 .idea/
-money.go
+.vscode/
+.env
+.DS_Store

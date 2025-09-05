@@ -4,14 +4,12 @@ import (
 	"log"
 
 	"github.com/IBM/sarama"
-
-	"go-cth/202409/kafka"
 )
 
 func main() {
 	config := sarama.NewConfig()
 
-	consumer, err := sarama.NewConsumer(kafka.IpLists, config)
+	consumer, err := sarama.NewConsumer([]string{"192.168.146.128:9092"}, config)
 	if err != nil {
 		log.Fatalf("Failed to create consumer: %v", err)
 	}
@@ -22,7 +20,7 @@ func main() {
 		}
 	}(consumer)
 
-	consumePartition, err := consumer.ConsumePartition(kafka.Topic, 0, sarama.OffsetNewest)
+	consumePartition, err := consumer.ConsumePartition("sep", 0, sarama.OffsetNewest)
 	if err != nil {
 		log.Fatalf("Failed to start partition consumer: %v", err)
 	}

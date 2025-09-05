@@ -27,16 +27,10 @@ func main() {
 	// 其中包含 testError 作为原始错误
 	e := getError()
 	fmt.Println("e =", e)
-
-	// 编译器的进步告诉我，fmt.Println(e == testError) 这种写法已经是 warning 了
-	// 所以还是用 errors.Is 吧             ------2024.07.26
-	//fmt.Println(e == testError)          // true
-
 	fmt.Println(errors.Is(e, testError)) // true
 
 	// errors.Is 用于检查错误链中是否包含特定类型的错误
 	e1 := getError1()
 	fmt.Println("e1 =", e1)
-	//fmt.Println(e1 == testError)          // false
 	fmt.Println(errors.Is(e1, testError)) // true
 }

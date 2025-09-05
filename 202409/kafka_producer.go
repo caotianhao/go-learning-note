@@ -7,8 +7,6 @@ import (
 	"os"
 
 	"github.com/IBM/sarama"
-
-	"go-cth/202409/kafka"
 )
 
 func main() {
@@ -16,7 +14,7 @@ func main() {
 
 	config.Producer.Return.Successes = true
 
-	producer, err := sarama.NewSyncProducer(kafka.IpLists, config)
+	producer, err := sarama.NewSyncProducer([]string{"192.168.146.128:9092"}, config)
 	if err != nil {
 		log.Fatalf("Failed to create producer: %v", err)
 	}
@@ -38,7 +36,7 @@ func main() {
 			}
 
 			message := &sarama.ProducerMessage{
-				Topic: kafka.Topic,
+				Topic: "sep",
 				Value: sarama.StringEncoder(line),
 			}
 

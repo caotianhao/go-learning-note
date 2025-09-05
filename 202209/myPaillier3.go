@@ -7,8 +7,8 @@ import (
 	"time"
 )
 
-var zero = big.NewInt(0)
-var one = big.NewInt(1)
+var zero3 = big.NewInt(0)
+var one3 = big.NewInt(1)
 
 // the whole key for paillier
 type key struct {
@@ -26,8 +26,8 @@ type key struct {
 }
 
 // function L(x)=(x-1)/n
-func l(x *big.Int, n *big.Int) *big.Int {
-	return new(big.Int).Div(new(big.Int).Sub(x, one), n)
+func l3(x *big.Int, n *big.Int) *big.Int {
+	return new(big.Int).Div(new(big.Int).Sub(x, one3), n)
 }
 
 func keyGen(bits int) *key {
@@ -54,16 +54,16 @@ func keyGen(bits int) *key {
 	n := new(big.Int).Mul(p, q)
 
 	//let g=n+1
-	g := new(big.Int).Add(n, one)
+	g := new(big.Int).Add(n, one3)
 
 	//choose r randomly
 	r, _ := rand.Int(rand.Reader, n)
 
 	//let r!=0
-	flag1 := r.Cmp(zero)
+	flag1 := r.Cmp(zero3)
 	for flag1 == 0 {
 		r, _ = rand.Int(rand.Reader, n)
-		flag1 = r.Cmp(zero)
+		flag1 = r.Cmp(zero3)
 		if flag != 0 {
 			break
 		}
@@ -71,8 +71,8 @@ func keyGen(bits int) *key {
 
 	//nn=n^2,p1=p-1,q1=q-1
 	nn := new(big.Int).Mul(n, n)
-	p1 := new(big.Int).Sub(p, one)
-	q1 := new(big.Int).Sub(q, one)
+	p1 := new(big.Int).Sub(p, one3)
+	q1 := new(big.Int).Sub(q, one3)
 
 	//find gcd(p-1,q-1) to get lcm(p-1,q-1)=lambda
 	gcd := new(big.Int).GCD(x, y, p1, q1)
@@ -80,7 +80,7 @@ func keyGen(bits int) *key {
 
 	//g^lambda mod n^2, L it and L's inverse
 	gLambdaModNn := new(big.Int).Exp(g, lambda, nn)
-	lg := l(gLambdaModNn, n)
+	lg := l3(gLambdaModNn, n)
 	invLg := new(big.Int).ModInverse(lg, n)
 
 	//return the whole key
@@ -110,7 +110,7 @@ func enCry(message *big.Int, myKey key) *big.Int {
 func deCry(cipher *big.Int, myKey key) *big.Int {
 	//decry the cipher
 	cLambdaModNn := new(big.Int).Exp(cipher, myKey.lambda, myKey.nn)
-	lc := l(cLambdaModNn, myKey.n)
+	lc := l3(cLambdaModNn, myKey.n)
 	d := new(big.Int).Mod(new(big.Int).Mul(lc, myKey.invLg), myKey.n)
 	return d
 }
