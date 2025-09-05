@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"gogogo/project02"
+	"go-cth/project02"
 )
 
 // 变量名，常量名，函数名首字母大写，则表示public

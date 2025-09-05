@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"sync"
 
-	"gogogo/202408/model"
+	"go-cth/202408/model"
 )
 
 func getCDKGo() bool {

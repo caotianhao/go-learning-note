@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"gogogo/project02"
+	"go-cth/project02"
 )
 
 func seqSearch(arr [20]int, num int) int {

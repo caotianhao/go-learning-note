@@ -1,4 +1,4 @@
-module gogogo
+module go-cth
 
 go 1.24.2
 

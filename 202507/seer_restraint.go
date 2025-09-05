@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gogogo/model"
+	"go-cth/model"
 )
 
 func GetSeerElementRestraint1v1(atk, def model.SeerElem) model.SeerElemKezhiRes {

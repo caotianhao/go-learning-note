@@ -8,7 +8,7 @@ import (
 
 	"github.com/IBM/sarama"
 
-	"gogogo/202409/kafka"
+	"go-cth/202409/kafka"
 )
 
 func main() {

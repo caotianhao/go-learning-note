@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gogogo/model"
+	"go-cth/model"
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"

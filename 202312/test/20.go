@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"gogogo/202312/test/t1"
+	"go-cth/202312/test/t1"
 )
 
 type Student = t1.Student

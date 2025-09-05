@@ -6,7 +6,7 @@ import (
 	"io"
 	"net/http"
 
-	"gogogo/202408/model"
+	"go-cth/202408/model"
 )
 
 func getCDK() bool {
