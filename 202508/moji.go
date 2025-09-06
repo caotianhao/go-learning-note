@@ -9,6 +9,7 @@ const (
 	expSucceed      = 16274
 	expFailNormal   = 15119
 	expFailHard     = 15119
+	expHell6        = 6450
 	expUpgradePerLv = 1500000
 
 	lvMax = 459
@@ -20,6 +21,7 @@ const (
 	hpLogin60min     = 10
 	hpLeader         = 5
 	hpAd             = 40
+	hpHell6          = -35
 
 	ironBreakWeapon = 83328
 	ironBreakShoe   = 110000
@@ -37,13 +39,14 @@ const (
 	expJianghu      = 4000*4 + 5000*3 + 6000*3
 	expDoubleNormal = -hpAdNormalDouble / 5 * expFailNormal * 2
 	expDoubleHard   = -hpAdHardDouble / 5 * expFailHard * 2
+	expFillHell6    = -hpHell6 / 5 * expHell6
 	expOther        = (hpLeader + hpAd + hpLogin60min + hpFriend +
-		hpAdHardDouble + hpAdNormalDouble) / 5 * expSucceed
+		hpAdHardDouble + hpAdNormalDouble + hpHell6) / 5 * expSucceed
 
 	expNatural = exp0to9 + exp9to24
 	expDouble  = expDoubleNormal + expDoubleHard
 	expEx      = expJianghu + expOther
-	expPerDay  = expNatural + expDouble + expEx
+	expPerDay  = expNatural + expDouble + expEx + expFillHell6
 
 	ironBreak = ironBreakShoe + ironBreakWeapon
 )
