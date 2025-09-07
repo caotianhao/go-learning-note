@@ -13,7 +13,7 @@ const (
 	expUpgradePerLv = 1500000
 
 	lvMax = 459
-	lvNow = 363
+	lvNow = 366
 
 	hpAdNormalDouble = -25
 	hpAdHardDouble   = -25
@@ -24,10 +24,12 @@ const (
 	hpHell6          = -35
 
 	ironBreakWeapon = 83328
-	ironBreakShoe   = 110000
-	ironNow         = 157362
+	ironBreakShoe   = 111552
+	ironBreak27     = 143752
+	ironNow         = 173502
 
-	equipLv = 100
+	equipLv   = 100
+	equipBase = 35
 
 	cui35   = 302000
 	cuiDiff = 12080
@@ -48,15 +50,16 @@ const (
 	expEx      = expJianghu + expOther
 	expPerDay  = expNatural + expDouble + expEx + expFillHell6
 
-	ironBreak = ironBreakShoe + ironBreakWeapon
+	ironBreak    = ironBreakShoe + ironBreakWeapon
+	ironBreakAll = ironBreak + ironBreak27*4
 )
 
 var cuiFromGold2MaxSingle = make([]int, equipLv)
 
 func initCuiSlice() {
-	cuiFromGold2MaxSingle[35] = cui35
-	for i := 36; i < equipLv; i++ {
-		cuiFromGold2MaxSingle[i] += (i-35)*cuiDiff + cuiFromGold2MaxSingle[35]
+	cuiFromGold2MaxSingle[equipBase] = cui35
+	for i := equipBase + 1; i < equipLv; i++ {
+		cuiFromGold2MaxSingle[i] += (i-equipBase)*cuiDiff + cuiFromGold2MaxSingle[equipBase]
 	}
 }
 
@@ -76,7 +79,7 @@ func wsSame() {
 		ironPerDay := (tmp + 1) * 100
 		curIron := ironNow + ironBreak + days*ironPerDay
 		needIron := 2 * cuiFromGold2MaxSingle[tmp]
-		dateStr := startDate.AddDate(0, 0, days).Format("2006-01-02")
+		dateStr := startDate.AddDate(0, 0, days).Format("06-01-02")
 
 		fmt.Printf("%s, lv.%d, need %d iron\n", dateStr, curLv, needIron-curIron)
 	}
@@ -99,10 +102,32 @@ func wsUnSame() {
 		curIronW := ironNow + ironBreakWeapon + days*ironPerDay
 		curIronS := ironNow + ironBreakShoe + days*ironPerDay
 		needIron := cuiFromGold2MaxSingle[tmp]
-		dateStr := startDate.AddDate(0, 0, days).Format("2006-01-02")
+		dateStr := startDate.AddDate(0, 0, days).Format("06-01-02")
 
 		fmt.Printf("%s, lv.%d, W %d iron, S %d iron\n",
 			dateStr, curLv, needIron-curIronW, needIron-curIronS)
+	}
+}
+
+func changeAll() {
+	startDate := time.Now()
+
+	for days := 1; ; days++ {
+		curLv := lvNow + (days*expPerDay)/expUpgradePerLv
+		if curLv > lvMax {
+			break
+		}
+		tmp := curLv/10 + 1
+		if tmp > equipLv-1 {
+			break
+		}
+
+		ironPerDay := (tmp + 1) * 100
+		curIron := ironNow + ironBreakAll + days*ironPerDay
+		needIron := 6 * cuiFromGold2MaxSingle[tmp]
+		dateStr := startDate.AddDate(0, 0, days).Format("06-01-02")
+
+		fmt.Printf("%s, lv.%d, change all need %d iron\n", dateStr, curLv, needIron-curIron)
 	}
 }
 
@@ -111,4 +136,6 @@ func main() {
 	wsSame()
 	fmt.Println("********************************************************")
 	wsUnSame()
+	fmt.Println("********************************************************")
+	changeAll()
 }
