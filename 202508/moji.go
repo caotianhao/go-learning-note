@@ -63,79 +63,38 @@ func initCuiSlice() {
 	}
 }
 
-func wsSame() {
+func calIron() {
 	startDate := time.Now()
 
 	for days := 1; ; days++ {
-		curLv := lvNow + (days*expPerDay)/expUpgradePerLv
-		if curLv > lvMax {
+		lv := lvNow + (days*expPerDay)/expUpgradePerLv
+		if lv > lvMax {
 			break
 		}
-		tmp := curLv/10 + 1
+		tmp := lv/10 + 1
 		if tmp > equipLv-1 {
 			break
 		}
 
 		ironPerDay := (tmp + 1) * 100
-		curIron := ironNow + ironBreak + days*ironPerDay
-		needIron := 2 * cuiFromGold2MaxSingle[tmp]
-		dateStr := startDate.AddDate(0, 0, days).Format("06-01-02")
 
-		fmt.Printf("%s, lv.%d, need %d iron\n", dateStr, curLv, needIron-curIron)
-	}
-}
+		ironW := ironNow + ironBreakWeapon + days*ironPerDay
+		needIronW := cuiFromGold2MaxSingle[tmp]
+		ironS := ironNow + ironBreakShoe + days*ironPerDay
+		needIronS := cuiFromGold2MaxSingle[tmp]
+		iron2 := ironNow + ironBreak + days*ironPerDay
+		needIron2 := 2 * cuiFromGold2MaxSingle[tmp]
+		ironAll := ironNow + ironBreakAll + days*ironPerDay
+		needIronAll := 6 * cuiFromGold2MaxSingle[tmp]
 
-func wsUnSame() {
-	startDate := time.Now()
+		date := startDate.AddDate(0, 0, days).Format("06-01-02")
 
-	for days := 1; ; days++ {
-		curLv := lvNow + (days*expPerDay)/expUpgradePerLv
-		if curLv > lvMax {
-			break
-		}
-		tmp := curLv/10 + 1
-		if tmp > equipLv-1 {
-			break
-		}
-
-		ironPerDay := (tmp + 1) * 100
-		curIronW := ironNow + ironBreakWeapon + days*ironPerDay
-		curIronS := ironNow + ironBreakShoe + days*ironPerDay
-		needIron := cuiFromGold2MaxSingle[tmp]
-		dateStr := startDate.AddDate(0, 0, days).Format("06-01-02")
-
-		fmt.Printf("%s, lv.%d, W %d iron, S %d iron\n",
-			dateStr, curLv, needIron-curIronW, needIron-curIronS)
-	}
-}
-
-func changeAll() {
-	startDate := time.Now()
-
-	for days := 1; ; days++ {
-		curLv := lvNow + (days*expPerDay)/expUpgradePerLv
-		if curLv > lvMax {
-			break
-		}
-		tmp := curLv/10 + 1
-		if tmp > equipLv-1 {
-			break
-		}
-
-		ironPerDay := (tmp + 1) * 100
-		curIron := ironNow + ironBreakAll + days*ironPerDay
-		needIron := 6 * cuiFromGold2MaxSingle[tmp]
-		dateStr := startDate.AddDate(0, 0, days).Format("06-01-02")
-
-		fmt.Printf("%s, lv.%d, change all need %d iron\n", dateStr, curLv, needIron-curIron)
+		fmt.Printf("%s, lv.%d, W %d, S %d, 2 %d, 6 %d\n", date, lv, needIronW-ironW,
+			needIronS-ironS, needIron2-iron2, needIronAll-ironAll)
 	}
 }
 
 func main() {
 	initCuiSlice()
-	wsSame()
-	fmt.Println("********************************************************")
-	wsUnSame()
-	fmt.Println("********************************************************")
-	changeAll()
+	calIron()
 }
