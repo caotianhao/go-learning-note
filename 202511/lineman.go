@@ -16,7 +16,7 @@ import (
  */
 
 func GetPageViews(date string) int {
-	time.Sleep(100 * time.Microsecond)
+	time.Sleep(100 * time.Millisecond)
 	t, err := time.Parse("2006-01-02", date)
 	if err != nil {
 		return 0
@@ -32,7 +32,7 @@ func GetPageViews(date string) int {
 }
 
 func GetAdClicks(date string) int {
-	time.Sleep(100 * time.Microsecond)
+	time.Sleep(100 * time.Millisecond)
 	t, err := time.Parse("2006-01-02", date)
 	if err != nil {
 		return 0
@@ -60,32 +60,57 @@ func dateToNumber(date string) int {
 
 func CalculateWeeklyClickRate(startDate string, endDate string) []string {
 	divRes := DivDate(startDate, endDate)
-	fmt.Println(divRes)
 	var res []string
 	var wg sync.WaitGroup
 	sem := make(chan struct{}, 10)
 
-	for _, v := range divRes {
-		s, e := v[0], v[1]
-		start, _ := time.Parse("2006-01-02", s)
-		end, _ := time.Parse("2006-01-02", e)
-		vv, g := 0, 0
-		for current := start; !current.After(end); current = current.AddDate(0, 0, 1) {
-			wg.Add(1)
-			sem <- struct{}{}
-			go func(cc time.Time, vvv, gg *int) {
-				defer wg.Done()
-				defer func() { <-sem }()
-				*vvv += GetPageViews(cc.Format("2006-01-02"))
-				*gg += GetAdClicks(cc.Format("2006-01-02"))
-			}(current, &vv, &g)
-		}
-		wg.Wait()
-		if vv == 0 || g == 0 {
-			res = append(res, "0.00%")
-		} else {
-			res = append(res, fmt.Sprintf("%.2f%%", float64(g)/float64(vv)*100))
-		}
+	type weekResult struct {
+		index int
+		value string
+	}
+
+	resultChan := make(chan weekResult, len(divRes))
+
+	for i, v := range divRes {
+		wg.Add(1)
+		sem <- struct{}{}
+		go func(idx int, s, e string) {
+			defer wg.Done()
+			defer func() { <-sem }()
+			start, _ := time.Parse("2006-01-02", s)
+			end, _ := time.Parse("2006-01-02", e)
+			var vv, g int
+			var innerWg sync.WaitGroup
+
+			for current := start; !current.After(end); current = current.AddDate(0, 0, 1) {
+				innerWg.Add(2)
+				go func(cc time.Time) {
+					defer innerWg.Done()
+					vv += GetPageViews(cc.Format("2006-01-02"))
+				}(current)
+				go func(cc time.Time) {
+					defer innerWg.Done()
+					g += GetAdClicks(cc.Format("2006-01-02"))
+				}(current)
+			}
+
+			innerWg.Wait()
+
+			val := "0.00%"
+			if vv != 0 && g != 0 {
+				val = fmt.Sprintf("%.2f%%", float64(g)/float64(vv)*100)
+			}
+
+			resultChan <- weekResult{index: idx, value: val}
+		}(i, v[0], v[1])
+	}
+
+	wg.Wait()
+	close(resultChan)
+
+	res = make([]string, len(divRes))
+	for r := range resultChan {
+		res[r.index] = r.value
 	}
 
 	return res
@@ -128,5 +153,8 @@ func DivDate(startDate string, endDate string) [][2]string {
 }
 
 func main() {
+	start := time.Now()
 	fmt.Println(CalculateWeeklyClickRate("2025-09-01", "2025-10-12"))
+	end := time.Since(start)
+	fmt.Println(end)
 }
