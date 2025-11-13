@@ -6,14 +6,14 @@ import (
 )
 
 const (
-	expSucceed      = 16325
-	expFailNormal   = 15500
-	expFailHard     = 15500
+	expSucceed      = 16875
+	expFailNormal   = 16600
+	expFailHard     = 16600
 	expHell6        = 6450
 	expUpgradePerLv = 1500000
 
 	lvMax = 459
-	lvNow = 401
+	lvNow = 419
 
 	hpAdNormalDouble = -25
 	hpAdHardDouble   = -25
@@ -21,12 +21,12 @@ const (
 	hpLogin60min     = 10
 	hpLeader         = 5
 	hpAd             = 40
-	hpHell6          = -35
+	hpHell6          = -40
 
 	ironBreakWeapon = 83328
 	ironBreakShoe   = 111552
 	ironBreak27     = 143752
-	ironNow         = 366282
+	ironNow         = 469542
 
 	equipLv   = 100
 	equipBase = 35
