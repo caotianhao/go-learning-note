@@ -12,8 +12,8 @@ const (
 	expHell6        = 6450
 	expUpgradePerLv = 1500000
 
-	lvMax = 459
-	lvNow = 419
+	lvMax = 460
+	lvNow = 434
 
 	hpAdNormalDouble = -25
 	hpAdHardDouble   = -25
@@ -26,7 +26,7 @@ const (
 	ironBreakWeapon = 83328
 	ironBreakShoe   = 111552
 	ironBreak27     = 143752
-	ironNow         = 469542
+	ironNow         = 568302
 
 	equipLv   = 100
 	equipBase = 35
