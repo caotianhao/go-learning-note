@@ -1,3 +1,5 @@
+// 2026.01.06
+// change weapon.lv and shoe.lv to 47
 package main
 
 import (
