@@ -15,7 +15,6 @@ import (
 	"fmt"
 	"hash/adler32"
 	"hash/crc32"
-	"hash/crc64"
 	"math"
 	"math/rand"
 	"net/http"
@@ -75,6 +74,7 @@ func main() {
 	h12 := utf16.Encode(nil)
 	fmt.Println(h7, h8, h9, h10, h11, h12)
 	fmt.Println(unsafe.Sizeof(12))
-	h13 := crc32.Size + crc64.ISO + adler32.Size
+	const crc64Size = 8
+	h13 := crc32.Size + crc64Size + adler32.Size
 	fmt.Println(h13)
 }
