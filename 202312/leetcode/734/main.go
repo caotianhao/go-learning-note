@@ -10,7 +10,7 @@ func areSentencesSimilar(sentence1, sentence2 []string, similarPairs [][]string)
 	if len(sentence1) != len(sentence2) {
 		return false
 	}
-	for i := 0; i < len(sentence1); i++ {
+	for i := range sentence1 {
 		_, ok1 := sim[[2]string{sentence1[i], sentence2[i]}]
 		_, ok2 := sim[[2]string{sentence2[i], sentence1[i]}]
 		if !(sentence1[i] == sentence2[i] || ok1 || ok2) {

@@ -7,7 +7,7 @@ import (
 
 func countValidWords(sentence string) (cnt int) {
 	s1 := strings.Fields(sentence)
-	for i := 0; i < len(s1); i++ {
+	for i := range s1 {
 		if isHaveNum(s1[i]) && isHavePunctuation(s1[i]) && isHaveHyphen(s1[i]) {
 			cnt++
 			//fmt.Printf("s[%d] = %v\n", i, s1[i])
@@ -17,7 +17,7 @@ func countValidWords(sentence string) (cnt int) {
 }
 
 func isHaveNum(s string) bool {
-	for i := 0; i < len(s); i++ {
+	for i := range s {
 		if s[i] >= '0' && s[i] <= '9' {
 			return false
 		}

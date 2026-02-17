@@ -18,7 +18,7 @@ func buildArray1441(target []int, n int) []string {
 }
 
 func isIn1441(str []int, n int) bool {
-	for i := 0; i < len(str); i++ {
+	for i := range str {
 		if str[i] == n {
 			return true
 		}

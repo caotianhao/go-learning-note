@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func fixedPoint(arr []int) int {
-	for i := 0; i < len(arr); i++ {
+	for i := range arr {
 		if arr[i] == i {
 			return i
 		}

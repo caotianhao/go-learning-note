@@ -16,11 +16,11 @@ func (h *maxHeap) Less(i, j int) bool {
 	return h.IntSlice[i] > h.IntSlice[j]
 }
 
-func (h *maxHeap) Push(x interface{}) {
+func (h *maxHeap) Push(x any) {
 	h.IntSlice = append(h.IntSlice, x.(int))
 }
 
-func (h *maxHeap) Pop() interface{} {
+func (h *maxHeap) Pop() any {
 	r := h.IntSlice[len(h.IntSlice)-1]
 	h.IntSlice = h.IntSlice[:len(h.IntSlice)-1]
 	return r

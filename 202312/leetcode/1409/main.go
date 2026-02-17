@@ -7,7 +7,7 @@ func processQueries(queries []int, m int) (res []int) {
 	for i := 0; i < m; i++ {
 		p[i] = i + 1
 	}
-	for i := 0; i < len(queries); i++ {
+	for i := range queries {
 		for j := 0; j < m; j++ {
 			if queries[i] == p[j] {
 				res = append(res, j)

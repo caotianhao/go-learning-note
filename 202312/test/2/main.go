@@ -21,7 +21,7 @@ func maxOddCount(arr []int, k int) int {
 		}
 	} // 此时 对应 114514 的 bits 为 002002，这里去掉0，所以 bits -> 22
 	sort.Ints(bits)
-	for i := 0; i < len(bits); i++ {
+	for i := range bits {
 		if k < bits[0] {
 			return odd
 		}

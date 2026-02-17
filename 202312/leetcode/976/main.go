@@ -10,7 +10,7 @@ func largestPerimeter(nums []int) int {
 		return nums[i] > nums[j]
 	})
 	tmp := make([]int, 0)
-	for i := 0; i < len(nums); i++ {
+	for i := range nums {
 		tmp = append(tmp, nums[i])
 		if len(tmp) == 3 {
 			if isTriangle(tmp) {

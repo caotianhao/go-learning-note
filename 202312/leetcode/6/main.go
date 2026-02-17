@@ -28,7 +28,7 @@ func convert(s string, numRows int) string {
 	}
 	// 从左到右从上到下依次加起来
 	str := ""
-	for i := 0; i < len(arr); i++ {
+	for i := range arr {
 		for j := 0; j < len(arr[i]); j++ {
 			str += arr[i][j]
 		}

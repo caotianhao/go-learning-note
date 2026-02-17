@@ -11,11 +11,11 @@ import (
 
 type myHeap []int64
 
-//func (h *myHeap) Push(i interface{}) {
+//func (h *myHeap) Push(i any) {
 //	h.IntSlice = append(h.IntSlice, i.(int))
 //}
 //
-//func (h *myHeap) Pop() interface{} {
+//func (h *myHeap) Pop() any {
 //	o := h.IntSlice[len(h.IntSlice)-1]
 //	h.IntSlice = h.IntSlice[:len(h.IntSlice)-1]
 //	return o
@@ -33,11 +33,11 @@ func (h *myHeap) Swap(i, j int) {
 	(*h)[i], (*h)[j] = (*h)[j], (*h)[i]
 }
 
-func (h *myHeap) Push(i interface{}) {
+func (h *myHeap) Push(i any) {
 	*h = append(*h, i.(int64))
 }
 
-func (h *myHeap) Pop() interface{} {
+func (h *myHeap) Pop() any {
 	o := (*h)[len(*h)-1]
 	*h = (*h)[:len(*h)-1]
 	return o

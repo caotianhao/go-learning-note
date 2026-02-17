@@ -23,7 +23,7 @@ func wordPattern(pattern string, s string) bool {
 
 func verse290(s string) (slice290 []string) {
 	tmp := ""
-	for i := 0; i < len(s); i++ {
+	for i := range s {
 		if s[i] == ' ' {
 			slice290 = append(slice290, tmp)
 			tmp = ""

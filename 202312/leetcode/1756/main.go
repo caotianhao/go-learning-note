@@ -22,7 +22,7 @@ func (mru *MRUQueue) Fetch(k int) int {
 
 func move1756(arr []int, index int) []int {
 	newArr := make([]int, 0)
-	for i := 0; i < len(arr); i++ {
+	for i := range arr {
 		if i == index {
 			continue
 		}

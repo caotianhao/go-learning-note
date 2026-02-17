@@ -15,7 +15,7 @@ func diagonalPrime(nums [][]int) int {
 		}
 	}
 	sort.Sort(sort.Reverse(sort.IntSlice(arr)))
-	for i := 0; i < len(arr); i++ {
+	for i := range arr {
 		if isPrime2614(arr[i]) {
 			return arr[i]
 		}

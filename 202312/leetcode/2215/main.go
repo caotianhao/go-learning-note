@@ -16,7 +16,7 @@ func findDifference(nums1 []int, nums2 []int) [][]int {
 			deleteSlice = append(deleteSlice, i)
 		}
 	}
-	for i := 0; i < len(deleteSlice); i++ {
+	for i := range deleteSlice {
 		nums1 = deleteNumFromArr2215(nums1, deleteSlice[i])
 		nums2 = deleteNumFromArr2215(nums2, deleteSlice[i])
 	}

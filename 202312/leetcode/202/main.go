@@ -8,7 +8,7 @@ func isHappy(n int) bool {
 		mySlice = append(mySlice, n%10)
 		n /= 10
 	}
-	for i := 0; i < len(mySlice); i++ {
+	for i := range mySlice {
 		sum += mySlice[i] * mySlice[i]
 	}
 	switch sum {

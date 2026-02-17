@@ -31,7 +31,7 @@ func minimumOperations(nums []int) int {
 }
 
 func isAllZero2357(nums []int) bool {
-	for i := 0; i < len(nums); i++ {
+	for i := range nums {
 		if nums[i] != 0 {
 			return false
 		}

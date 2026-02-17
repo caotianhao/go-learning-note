@@ -8,7 +8,7 @@ func findDuplicates1(nums []int) (ans []int) {
 	// 正好减去 1 之后对应下标
 	// 由于不能使用额外空间，再结合题意
 	// 使用正负号标记是否出现过
-	for i := 0; i < len(nums); i++ {
+	for i := range nums {
 		// 由于在遍历到该位置之前可能被加了负号
 		// 所以这里要取绝对值
 		t := abs442(nums[i])

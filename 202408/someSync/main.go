@@ -11,7 +11,7 @@ func sync1() int {
 	a := 1
 	mu := &sync.Mutex{}
 	wg := sync.WaitGroup{}
-	for i := 0; i < loop; i++ {
+	for range loop {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
@@ -30,7 +30,7 @@ func sync2() int {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		for i := 0; i < loop; i++ {
+		for range loop {
 			a++
 		}
 	}()
@@ -41,7 +41,7 @@ func sync2() int {
 func sync3() int {
 	var a int32 = 1
 	wg := sync.WaitGroup{}
-	for i := 0; i < loop; i++ {
+	for range loop {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
@@ -75,7 +75,7 @@ func sync5() int {
 	a := 1
 	mu := &sync.RWMutex{}
 	done := make(chan struct{})
-	for i := 0; i < loop; i++ {
+	for range loop {
 		go func() {
 			mu.Lock()
 			defer mu.Unlock()
@@ -83,7 +83,7 @@ func sync5() int {
 			done <- struct{}{}
 		}()
 	}
-	for i := 0; i < loop; i++ {
+	for range loop {
 		<-done
 	}
 	return a
@@ -91,8 +91,10 @@ func sync5() int {
 
 func sync6() int {
 	a := 1
-	for i := 0; i < loop; i++ {
+	for range loop {
 		a++
 	}
 	return a
 }
+
+func main() {}

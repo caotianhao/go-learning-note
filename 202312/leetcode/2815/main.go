@@ -11,7 +11,7 @@ func maxSum(nums []int) int {
 		dig[i] = getMaxDigit(v)
 	}
 	maxN := -1
-	for i := 0; i < len(dig); i++ {
+	for i := range dig {
 		for j := i + 1; j < len(dig); j++ {
 			if dig[i] == dig[j] {
 				t := nums[i] + nums[j]

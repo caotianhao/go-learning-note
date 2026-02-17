@@ -11,7 +11,7 @@ func largestUniqueNumber(nums []int) int {
 		m[v]++
 	}
 	sort.Sort(sort.Reverse(sort.IntSlice(nums)))
-	for i := 0; i < len(nums); i++ {
+	for i := range nums {
 		if m[nums[i]] == 1 {
 			return nums[i]
 		}

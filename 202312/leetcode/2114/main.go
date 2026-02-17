@@ -4,7 +4,7 @@ import "fmt"
 
 func mostWordsFound(sentences []string) int {
 	maxWF := 0
-	for i := 0; i < len(sentences); i++ {
+	for i := range sentences {
 		if howManyWords(sentences[i]) > maxWF {
 			maxWF = howManyWords(sentences[i])
 		}
@@ -14,7 +14,7 @@ func mostWordsFound(sentences []string) int {
 
 func howManyWords(s string) int {
 	space := 0
-	for i := 0; i < len(s); i++ {
+	for i := range s {
 		if string(s[i]) == " " {
 			space++
 		}

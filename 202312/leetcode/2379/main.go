@@ -22,7 +22,7 @@ func minimumRecolors(blocks string, k int) int {
 
 func howManyW2379(s string) int {
 	cnt := 0
-	for i := 0; i < len(s); i++ {
+	for i := range s {
 		if s[i] == 'W' {
 			cnt++
 		}

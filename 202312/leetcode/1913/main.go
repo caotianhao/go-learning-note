@@ -4,7 +4,7 @@ import "fmt"
 
 func maxProductDifference(nums []int) int {
 	minN, maxN, minIndex, maxIndex, min2, max2 := nums[0], nums[0], 0, 0, 10001, 0
-	for i := 0; i < len(nums); i++ {
+	for i := range nums {
 		if nums[i] > maxN {
 			maxN = nums[i]
 			maxIndex = i
@@ -14,7 +14,7 @@ func maxProductDifference(nums []int) int {
 			minIndex = i
 		}
 	}
-	for i := 0; i < len(nums); i++ {
+	for i := range nums {
 		if i != minIndex && i != maxIndex {
 			if nums[i] > max2 {
 				max2 = nums[i]

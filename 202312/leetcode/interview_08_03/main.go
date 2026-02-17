@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func findMagicIndex(nums []int) int {
-	for i := 0; i < len(nums); i++ {
+	for i := range nums {
 		if nums[i] == i {
 			return i
 		}

@@ -8,7 +8,7 @@ import (
 func maxNumberOfApples(weight []int) int {
 	sort.Ints(weight)
 	sum := 0
-	for i := 0; i < len(weight); i++ {
+	for i := range weight {
 		sum += weight[i]
 		if sum > 5000 {
 			return i

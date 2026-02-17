@@ -7,3 +7,5 @@ func addCal(n int) int {
 	}
 	return res
 }
+
+func main() {}

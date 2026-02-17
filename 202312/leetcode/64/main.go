@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func minPathSum(grid [][]int) int {
-	for i := 0; i < len(grid); i++ {
+	for i := range grid {
 		for j := 0; j < len(grid[0]); j++ {
 			if i == 0 && j == 0 {
 				continue

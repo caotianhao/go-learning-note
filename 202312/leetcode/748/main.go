@@ -12,10 +12,10 @@ func shortestCompletingWord(licensePlate string, words []string) string {
 	}
 	licensePlate = strings.ToLower(licensePlate)
 	lpMap, trueInd, minN := map[string]int{}, 0, 16
-	for i := 0; i < len(licensePlate); i++ {
+	for i := range licensePlate {
 		lpMap[string(licensePlate[i])]++
 	}
-	for i := 0; i < len(words); i++ {
+	for i := range words {
 		tmp := map[string]int{}
 		for j := 0; j < len(words[i]); j++ {
 			tmp[string(words[i][j])]++

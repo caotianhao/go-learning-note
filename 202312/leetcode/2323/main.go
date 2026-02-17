@@ -10,7 +10,7 @@ func minimumTime(jobs, workers []int) int {
 	res := -1
 	sort.Ints(jobs)
 	sort.Ints(workers)
-	for i := 0; i < len(jobs); i++ {
+	for i := range jobs {
 		t := int(math.Ceil(float64(jobs[i]) / float64(workers[i])))
 		if t > res {
 			res = t

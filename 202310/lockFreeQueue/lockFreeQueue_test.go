@@ -25,7 +25,7 @@ func TestName(t *testing.T) {
 	w.Wait()
 }
 
-var ch = make(chan interface{}, 50000)
+var ch = make(chan any, 50000)
 
 func BenchmarkGo_Chan(b *testing.B) {
 	b.ResetTimer()

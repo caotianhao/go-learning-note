@@ -30,7 +30,7 @@ func numUniqueEmails(emails []string) int {
 		emailArr = append(emailArr, []string{local, host})
 	}
 	emailMap := map[string]int{}
-	for i := 0; i < len(emailArr); i++ {
+	for i := range emailArr {
 		emailMap[emailArr[i][0]+"@"+emailArr[i][1]]++
 	}
 	return len(emailMap)

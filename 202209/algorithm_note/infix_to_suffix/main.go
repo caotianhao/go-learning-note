@@ -62,7 +62,7 @@ func stringToSlice(str string) (sliceInfix []string) {
 func infixToPostfix(infix []string) (postfix []string) {
 	opMap := map[string]int{"+": 1, "-": 1, "*": 2, "/": 2}
 	numStack, opStack := stack{-1, make([]string, 0)}, stack{-1, make([]string, 0)}
-	for i := 0; i < len(infix); i++ {
+	for i := range infix {
 		if infix[i] == "+" || infix[i] == "-" || infix[i] == "*" || infix[i] == "/" {
 			if opStack.empty() || opMap[infix[i]] > opMap[opStack.getTop()] {
 				opStack.push(infix[i])

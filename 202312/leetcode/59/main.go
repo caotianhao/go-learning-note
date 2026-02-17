@@ -42,7 +42,7 @@ func generateMatrix(n int) [][]int {
 
 func main() {
 	a := generateMatrix(13)
-	for i := 0; i < len(a); i++ {
+	for i := range a {
 		for j := 0; j < len(a); j++ {
 			fmt.Printf("%d\t", a[i][j])
 		}

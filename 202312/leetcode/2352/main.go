@@ -32,7 +32,7 @@ func rotate2352(grid [][]int) [][]int {
 }
 
 func isEqual2352(a, b []int) bool {
-	for i := 0; i < len(a); i++ {
+	for i := range a {
 		if a[i] != b[i] {
 			return false
 		}

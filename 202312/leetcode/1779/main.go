@@ -26,7 +26,7 @@ func nearestValidPoint(x int, y int, points [][]int) int {
 	if len(validPoint2) == 0 {
 		return -1
 	}
-	for i := 0; i < len(points); i++ {
+	for i := range points {
 		if points[i][0] == validPoint2[0][0] && points[i][1] == validPoint2[0][1] {
 			return i
 		}

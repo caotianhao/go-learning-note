@@ -2,20 +2,20 @@ package main
 
 import "fmt"
 
-var pre, in, post, level []interface{}
+var pre, in, post, level []any
 
 type tree struct {
-	val   interface{}
+	val   any
 	left  *tree
 	right *tree
 }
 
 type queue struct {
-	node []interface{}
+	node []any
 }
 
 func con() queue {
-	return queue{[]interface{}{}}
+	return queue{[]any{}}
 }
 
 func (q *queue) empty() bool {
@@ -35,7 +35,7 @@ func (q *queue) deQueue() (tr tree) {
 	panic("Queue is empty!")
 }
 
-func preOrder(tr *tree) []interface{} {
+func preOrder(tr *tree) []any {
 	if tr != nil {
 		pre = append(pre, tr.val)
 		preOrder(tr.left)
@@ -44,7 +44,7 @@ func preOrder(tr *tree) []interface{} {
 	return pre
 }
 
-func inOrder(tr *tree) []interface{} {
+func inOrder(tr *tree) []any {
 	if tr != nil {
 		inOrder(tr.left)
 		in = append(in, tr.val)
@@ -53,7 +53,7 @@ func inOrder(tr *tree) []interface{} {
 	return in
 }
 
-func postOrder(tr *tree) []interface{} {
+func postOrder(tr *tree) []any {
 	if tr != nil {
 		postOrder(tr.left)
 		postOrder(tr.right)
@@ -62,7 +62,7 @@ func postOrder(tr *tree) []interface{} {
 	return post
 }
 
-func levelOrder(tr *tree) []interface{} {
+func levelOrder(tr *tree) []any {
 	//初始化辅助队列
 	myQueue := con()
 	//创建辅助指针
@@ -95,7 +95,7 @@ func main() {
 	fmt.Println("postOrder =", postOrder(&one))
 	fmt.Println("levelOrder =", levelOrder(&one))
 
-	pre, in, post, level = []interface{}{}, []interface{}{}, []interface{}{}, []interface{}{}
+	pre, in, post, level = []any{}, []any{}, []any{}, []any{}
 	b := tree{"B", nil, nil}
 	m := tree{"M", nil, nil}
 	a := tree{"A", nil, nil}

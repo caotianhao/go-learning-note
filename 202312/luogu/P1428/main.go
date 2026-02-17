@@ -28,7 +28,7 @@ func main() {
 		}
 		res = append(res, cnt)
 	}
-	for i := 0; i < len(res); i++ {
+	for i := range res {
 		fmt.Printf("%d ", res[i])
 	}
 }

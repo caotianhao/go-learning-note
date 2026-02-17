@@ -10,7 +10,7 @@ func cellsInRange(s string) []string {
 	for i := s[1]; i <= s[4]; i++ {
 		numSlice = append(numSlice, int(i)-48)
 	}
-	for i := 0; i < len(charSlice); i++ {
+	for i := range charSlice {
 		for j := 0; j < len(numSlice); j++ {
 			targetSlice = append(targetSlice, charSlice[i]+fmt.Sprintf("%d", numSlice[j]))
 		}

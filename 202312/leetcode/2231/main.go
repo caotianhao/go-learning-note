@@ -40,7 +40,7 @@ func largestInteger(num int) int {
 		}
 	}
 	ret = reverse2231(ret)
-	for i := 0; i < len(ret); i++ {
+	for i := range ret {
 		want += ret[i] * int(math.Pow(10.0, float64(i)))
 	}
 	return want

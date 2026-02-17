@@ -4,7 +4,7 @@ import "fmt"
 
 func distinctDifferenceArray(nums []int) (diff []int) {
 	//l := len(nums)
-	for i := 0; i < len(nums); i++ {
+	for i := range nums {
 		diff = append(diff, set2670(nums[:i+1])-set2670(nums[i+1:]))
 	}
 	return

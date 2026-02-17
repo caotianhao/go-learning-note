@@ -9,7 +9,7 @@ func largestAltitude(gain []int) int {
 	for i := 0; i < l; i++ {
 		mySlice[i+1] = mySlice[i] + gain[i]
 	}
-	for i := 0; i < len(mySlice); i++ {
+	for i := range mySlice {
 		if mySlice[i] > maxN {
 			maxN = mySlice[i]
 		}

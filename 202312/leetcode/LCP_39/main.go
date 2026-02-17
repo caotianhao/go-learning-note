@@ -4,7 +4,7 @@ import "fmt"
 
 func minimumSwitchingTimes(source [][]int, target [][]int) (sum int) {
 	ms := map[int]int{}
-	for i := 0; i < len(source); i++ {
+	for i := range source {
 		for j := 0; j < len(source[0]); j++ {
 			ms[source[i][j]]++
 			ms[target[i][j]]--

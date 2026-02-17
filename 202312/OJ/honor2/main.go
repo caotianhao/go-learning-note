@@ -11,7 +11,7 @@ import (
 func deRar(s string) (res string) {
 	lastIdx := 0
 	stringList := make([]string, 0)
-	for i := 0; i < len(s); i++ {
+	for i := range s {
 		if isChar(s[i]) {
 			stringList = append(stringList, s[lastIdx:i+1])
 			lastIdx = i + 1

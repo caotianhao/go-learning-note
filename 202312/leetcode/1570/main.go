@@ -13,7 +13,7 @@ func Constructor1570(nums []int) SparseVector {
 // Return the dotProduct of two sparse vectors
 func (s1 *SparseVector) dotProduct(s2 SparseVector) int {
 	pro := 0
-	for i := 0; i < len(s2.arr); i++ {
+	for i := range s2.arr {
 		pro += s1.arr[i] * s2.arr[i]
 	}
 	return pro

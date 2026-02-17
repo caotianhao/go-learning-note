@@ -9,7 +9,7 @@ func countCharacters(words []string, chars string) int {
 		charMap[v]++
 	}
 loop:
-	for i := 0; i < len(words); i++ {
+	for i := range words {
 		wordsMap = map[int32]int{}
 		for _, v := range words[i] {
 			wordsMap[v]++

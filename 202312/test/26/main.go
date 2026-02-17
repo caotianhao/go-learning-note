@@ -47,7 +47,7 @@ func main() {
 	}
 
 	dis := make([]int, 0)
-	for i := 0; i < len(server); i++ {
+	for i := range server {
 		t := math.MaxInt32
 		for j := 0; j < len(client); j++ {
 			sq := abs1(server[i][0]-client[j][0]) + abs1(server[i][1]-client[j][1])

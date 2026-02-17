@@ -4,7 +4,7 @@ import "fmt"
 
 func findThePrefixCommonArray(A, B []int) []int {
 	res, myMap := make([]int, len(A)), map[int]int{}
-	for i := 0; i < len(A); i++ {
+	for i := range A {
 		myMap[A[i]]++
 		myMap[B[i]]++
 		cnt := 0

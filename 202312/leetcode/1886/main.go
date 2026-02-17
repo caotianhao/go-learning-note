@@ -32,7 +32,7 @@ func rotate90(matrix [][]int) [][]int {
 }
 
 func isEqual1886(a, b [][]int) bool {
-	for i := 0; i < len(a); i++ {
+	for i := range a {
 		for j := 0; j < len(a); j++ {
 			if a[i][j] != b[i][j] {
 				return false

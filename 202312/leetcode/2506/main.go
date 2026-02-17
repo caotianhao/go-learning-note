@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func similarPairs(words []string) (cnt int) {
-	for i := 0; i < len(words); i++ {
+	for i := range words {
 		for j := i + 1; j < len(words); j++ {
 			if judge2506(words[i], words[j]) {
 				cnt++

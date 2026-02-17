@@ -16,7 +16,7 @@ func fairCandySwap(aliceSizes []int, bobSizes []int) []int {
 		mapB[v] = v
 	}
 	need := int(math.Abs(float64(sumA-sumB))) / 2
-	for i := 0; i < len(aliceSizes); i++ {
+	for i := range aliceSizes {
 		if _, ok := mapB[need+aliceSizes[i]]; ok && sumA+need == sumB-need {
 			return []int{aliceSizes[i], need + aliceSizes[i]}
 		}

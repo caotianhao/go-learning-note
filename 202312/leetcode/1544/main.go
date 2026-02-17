@@ -7,7 +7,7 @@ import (
 
 func makeGood(s string) (res string) {
 	var strStack list.List
-	for i := 0; i < len(s); i++ {
+	for i := range s {
 		// 这就是一个栈的应用的最简单的题...思考了很久
 		// 栈不为空就入栈
 		// 或者不满足相消的条件也入栈

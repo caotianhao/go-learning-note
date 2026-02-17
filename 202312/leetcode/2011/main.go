@@ -4,7 +4,7 @@ import "fmt"
 
 func finalValueAfterOperations(operations []string) int {
 	a := 0
-	for i := 0; i < len(operations); i++ {
+	for i := range operations {
 		if operations[i] == "X++" || operations[i] == "++X" {
 			a++
 		} else {

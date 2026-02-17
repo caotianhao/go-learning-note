@@ -20,11 +20,11 @@ func (h *h2530) Swap(i, j int) {
 	(*h)[i], (*h)[j] = (*h)[j], (*h)[i]
 }
 
-func (h *h2530) Push(i interface{}) {
+func (h *h2530) Push(i any) {
 	*h = append(*h, i.(int64))
 }
 
-func (h *h2530) Pop() interface{} {
+func (h *h2530) Pop() any {
 	o := (*h)[len(*h)-1]
 	*h = (*h)[:len(*h)-1]
 	return o

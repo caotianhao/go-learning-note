@@ -8,7 +8,7 @@ import (
 func deckRevealedIncreasing(deck []int) []int {
 	ans := make([]int, 0)
 	sort.Sort(sort.Reverse(sort.IntSlice(deck)))
-	for i := 0; i < len(deck); i++ {
+	for i := range deck {
 		ans = move950(insert950(ans, deck[i]))
 	}
 	res := append(ans[1:], ans[0])

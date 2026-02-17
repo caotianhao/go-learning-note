@@ -4,7 +4,7 @@ import "fmt"
 
 func minLength(s string) int {
 	stack := make([]byte, 0)
-	for i := 0; i < len(s); i++ {
+	for i := range s {
 		if len(stack) != 0 &&
 			(stack[len(stack)-1] == 'A' && s[i] == 'B' ||
 				stack[len(stack)-1] == 'C' && s[i] == 'D') {

@@ -7,3 +7,5 @@ func productCal(n int) int {
 	}
 	return res
 }
+
+func main() {}

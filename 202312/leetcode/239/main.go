@@ -25,11 +25,11 @@ func (h *hp) Less(i, j int) bool {
 	return publicSlice[h.IntSlice[i]] > publicSlice[h.IntSlice[j]]
 }
 
-func (h *hp) Push(v interface{}) {
+func (h *hp) Push(v any) {
 	h.IntSlice = append(h.IntSlice, v.(int))
 }
 
-func (h *hp) Pop() interface{} {
+func (h *hp) Pop() any {
 	ans := h.IntSlice[len(h.IntSlice)-1]
 	h.IntSlice = h.IntSlice[:len(h.IntSlice)-1]
 	return ans

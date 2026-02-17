@@ -21,12 +21,12 @@ func main() {
 		}
 	}
 	//fmt.Println("hom", humanOrMonster)
-	against := make([][4]interface{}, 0)
+	against := make([][4]any, 0)
 	var id1, id2 int
 	var b1, b2 byte
 	for i := 0; i < m; i++ {
 		_, _ = fmt.Scanf("%d %d %c %c\n", &id1, &id2, &b1, &b2)
-		against = append(against, [4]interface{}{id1, id2, b1, b2})
+		against = append(against, [4]any{id1, id2, b1, b2})
 		//fmt.Println("ag", i, against)
 	}
 	for _, v := range against {

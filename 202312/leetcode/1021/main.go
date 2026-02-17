@@ -22,7 +22,7 @@ func removeOuterParentheses(s string) string {
 	}
 	//fmt.Println(tempSlice)
 	temp = ""
-	for i := 0; i < len(tempSlice); i++ {
+	for i := range tempSlice {
 		if len(tempSlice[i]) == 2 {
 			temp += ""
 		} else {

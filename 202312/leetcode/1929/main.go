@@ -4,10 +4,10 @@ import "fmt"
 
 func getConcatenation(nums []int) []int {
 	mySlice := make([]int, 0)
-	for i := 0; i < len(nums); i++ {
+	for i := range nums {
 		mySlice = append(mySlice, nums[i])
 	}
-	for i := 0; i < len(nums); i++ {
+	for i := range nums {
 		mySlice = append(mySlice, nums[i])
 	}
 	return mySlice

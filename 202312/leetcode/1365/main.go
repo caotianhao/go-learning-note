@@ -4,7 +4,7 @@ import "fmt"
 
 func smallerNumbersThanCurrent(nums []int) []int {
 	arr := make([]int, len(nums))
-	for i := 0; i < len(nums); i++ {
+	for i := range nums {
 		cnt := 0
 		for j := 0; j < len(nums); j++ {
 			if nums[i] > nums[j] {

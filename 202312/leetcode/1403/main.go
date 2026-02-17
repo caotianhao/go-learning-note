@@ -14,7 +14,7 @@ func minSubsequence(nums []int) []int {
 		allSum += v
 	}
 loop:
-	for i := 0; i < len(nums); i++ {
+	for i := range nums {
 		partSum = 0
 		for j := 0; j <= i; j++ {
 			partSum += nums[j]

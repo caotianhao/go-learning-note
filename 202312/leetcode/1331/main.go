@@ -19,7 +19,7 @@ func arrayRankTransform(arr []int) []int {
 		map1331[v] = ind
 		ind++
 	}
-	for i := 0; i < len(tmpArr); i++ {
+	for i := range tmpArr {
 		ret = append(ret, map1331[tmpArr[i]])
 	}
 	return ret

@@ -38,7 +38,7 @@ func temperatureTrend(temperatureA []int, temperatureB []int) int {
 }
 
 func isTwoArraysEqual(a, b []int) bool {
-	for i := 0; i < len(a); i++ {
+	for i := range a {
 		if a[i] != b[i] {
 			return false
 		}

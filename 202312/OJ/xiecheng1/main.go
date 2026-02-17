@@ -10,11 +10,11 @@ type myHee struct {
 	sort.IntSlice
 }
 
-func (h *myHee) Push(v interface{}) {
+func (h *myHee) Push(v any) {
 	h.IntSlice = append(h.IntSlice, v.(int))
 }
 
-func (h *myHee) Pop() interface{} {
+func (h *myHee) Pop() any {
 	o := h.IntSlice[len(h.IntSlice)-1]
 	h.IntSlice = h.IntSlice[:len(h.IntSlice)-1]
 	return o

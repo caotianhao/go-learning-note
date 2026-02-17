@@ -23,7 +23,7 @@ func minSetSize(arr []int) (c int) {
 	sort.Slice(h, func(i, j int) bool {
 		return h[i].value > h[j].value
 	})
-	for i := 0; i < len(h); i++ {
+	for i := range h {
 		t += h[i].value
 		c++
 		if t >= l/2 {

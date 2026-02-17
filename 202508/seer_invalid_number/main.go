@@ -11,7 +11,7 @@ func main() {
 	invalidNumbers := []int{4399}
 	fmt.Printf("have %d\nlose:", NumberMax-NumberMin+1)
 
-	for i := 0; i < len(invalidNumbers); i++ {
+	for i := range invalidNumbers {
 		if i%10 == 0 {
 			fmt.Println()
 		}

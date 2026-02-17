@@ -6,7 +6,7 @@ import "fmt"
 //实现求0-n个数的和
 func sum(args ...int) (sum int) {
 	sum = 0
-	for i := 0; i < len(args); i++ {
+	for i := range args {
 		sum += args[i]
 	}
 	return
@@ -16,7 +16,7 @@ func sum(args ...int) (sum int) {
 //如果形参列表有可变参数，则其应在形参列表最后
 func sum1(n1 float64, args ...float64) (sum float64) {
 	sum = n1
-	for i := 0; i < len(args); i++ {
+	for i := range args {
 		sum += args[i]
 	}
 	return sum

@@ -35,7 +35,7 @@ func fillAndCheckYcMap() []int {
 		{4696, 4702, 4662, 4669, 4505, 4495, 4476, 4408, 4394, 4365, 4305, 4241}, // 15
 	}
 
-	for i := 0; i < len(ycAll); i++ {
+	for i := range ycAll {
 		for j := 0; j < bagCap; j++ {
 			ycMap[ycAll[i][j]]++
 		}
@@ -61,7 +61,7 @@ func listYcMap() {
 	}
 
 	sort.Ints(ycSlice)
-	for i := 0; i < len(ycSlice); i++ {
+	for i := range ycSlice {
 		if i%bagCap == 0 && i != 0 {
 			fmt.Println()
 		}

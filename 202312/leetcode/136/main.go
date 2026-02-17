@@ -6,7 +6,7 @@ import "fmt"
 // 你的算法应该具有线性时间复杂度，你可以不使用额外空间来实现吗？
 func singleNumber(nums []int) int {
 	only := 0
-	for i := 0; i < len(nums); i++ {
+	for i := range nums {
 		only ^= nums[i]
 	}
 	return only

@@ -19,7 +19,7 @@ func inorderSuccessor2053(root, p *TreeNode2053) (r *TreeNode2053) {
 		}
 	}
 	dfs(root)
-	for i := 0; i < len(arr); i++ {
+	for i := range arr {
 		if arr[i] == p.Val {
 			index = i
 		}

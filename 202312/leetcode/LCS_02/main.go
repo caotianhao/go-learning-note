@@ -17,7 +17,7 @@ func halfQuestions(questions []int) int {
 	sort.Slice(sliceLCS02, func(i, j int) bool {
 		return sliceLCS02[i] > sliceLCS02[j]
 	})
-	for i := 0; i < len(sliceLCS02); i++ {
+	for i := range sliceLCS02 {
 		sum += sliceLCS02[i]
 		if sum >= len(questions)/2 {
 			return i + 1

@@ -27,11 +27,11 @@ func (kl *KthLargest2059) Add(val int) int {
 	return kl.IntSlice[0]
 }
 
-func (kl *KthLargest2059) Push(v interface{}) {
+func (kl *KthLargest2059) Push(v any) {
 	kl.IntSlice = append(kl.IntSlice, v.(int))
 }
 
-func (kl *KthLargest2059) Pop() interface{} {
+func (kl *KthLargest2059) Pop() any {
 	res := kl.IntSlice[len(kl.IntSlice)-1]
 	kl.IntSlice = kl.IntSlice[:len(kl.IntSlice)-1]
 	return res

@@ -4,12 +4,12 @@ import "fmt"
 
 func giveGem(gem []int, operations [][]int) int {
 	minN, maxN := 1001, -1
-	for i := 0; i < len(operations); i++ {
+	for i := range operations {
 		temp := gem[operations[i][0]] / 2
 		gem[operations[i][0]] -= temp
 		gem[operations[i][1]] += temp
 	}
-	for i := 0; i < len(gem); i++ {
+	for i := range gem {
 		if gem[i] > maxN {
 			maxN = gem[i]
 		}

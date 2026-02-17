@@ -4,7 +4,7 @@ import "fmt"
 
 func maximumCount(nums []int) int {
 	pos, neg := 0, 0
-	for i := 0; i < len(nums); i++ {
+	for i := range nums {
 		if nums[i] < 0 {
 			neg++
 		} else if nums[i] > 0 {

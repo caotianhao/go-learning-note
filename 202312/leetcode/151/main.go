@@ -12,7 +12,7 @@ func reverseWords151(s string) (ret string) {
 		splitStr[i], splitStr[l-1-i] = splitStr[l-1-i], splitStr[i]
 	}
 	s1 := strings.TrimSpace(strings.Join(splitStr, " "))
-	for i := 0; i < len(s1); i++ {
+	for i := range s1 {
 		if s1[i] == ' ' && s1[i+1] == ' ' {
 			ret += ""
 		} else {

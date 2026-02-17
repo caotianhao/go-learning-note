@@ -8,7 +8,7 @@ func minPath(path [][]int) int {
 	}
 	r, c := len(path), len(path[0])
 	dp := make([][]int, r)
-	for i := 0; i < len(dp); i++ {
+	for i := range dp {
 		dp[i] = make([]int, c)
 	}
 	dp[0][0] = path[0][0]

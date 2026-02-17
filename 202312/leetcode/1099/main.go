@@ -4,7 +4,7 @@ import "fmt"
 
 func twoSumLessThanK(nums []int, k int) int {
 	maxN := -1
-	for i := 0; i < len(nums); i++ {
+	for i := range nums {
 		for j := i + 1; j < len(nums); j++ {
 			if t := nums[i] + nums[j]; t < k && t > maxN {
 				maxN = t

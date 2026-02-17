@@ -29,7 +29,7 @@ func leafSimilar(root1, root2 *TreeNode872) bool {
 	if len(arr1) != len(arr2) {
 		return false
 	}
-	for i := 0; i < len(arr1); i++ {
+	for i := range arr1 {
 		if arr1[i] != arr2[i] {
 			return false
 		}

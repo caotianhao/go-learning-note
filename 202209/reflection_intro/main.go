@@ -5,7 +5,7 @@ import (
 	"reflect"
 )
 
-func reflectTest(a interface{}) {
+func reflectTest(a any) {
 
 	//通过反射获取到 num 的 type
 	rType := reflect.TypeOf(a)

@@ -13,13 +13,13 @@ func reverseOnlyLetters(s string) string {
 		}
 	}
 	allZiMu = reverse917(allZiMu)
-	for i := 0; i < len(allZiMu); i++ {
+	for i := range allZiMu {
 		if allZiMu[i] == 0 {
 			continue
 		}
 		rev = append(rev, allZiMu[i])
 	}
-	for i := 0; i < len(other); i++ {
+	for i := range other {
 		if other[i] != 0 {
 			rev = insert917(rev, i, other[i])
 		}

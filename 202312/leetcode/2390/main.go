@@ -4,7 +4,7 @@ import "fmt"
 
 func removeStars(s string) string {
 	stack := make([]byte, 0)
-	for i := 0; i < len(s); i++ {
+	for i := range s {
 		if s[i] >= 'a' && s[i] <= 'z' {
 			stack = append(stack, s[i])
 		} else {

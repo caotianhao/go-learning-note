@@ -7,10 +7,10 @@ import (
 
 func getLucky(s string, k int) int {
 	strInt, sum := "", 0
-	for i := 0; i < len(s); i++ {
+	for i := range s {
 		strInt += strconv.FormatInt(int64(s[i]-96), 10)
 	}
-	for i := 0; i < len(strInt); i++ {
+	for i := range strInt {
 		sum += int(strInt[i] - 48)
 	}
 	for i := 0; i < k-1; i++ {

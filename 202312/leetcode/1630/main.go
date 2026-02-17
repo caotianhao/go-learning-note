@@ -8,7 +8,7 @@ import (
 func checkArithmeticSubarrays(nums []int, l []int, r []int) []bool {
 	res := make([]bool, len(l))
 	temp := make([]int, 0)
-	for i := 0; i < len(l); i++ {
+	for i := range l {
 		temp = append(temp, nums[l[i]:r[i]+1]...)
 		res[i] = isArithmetic1630(temp)
 		temp = make([]int, 0)

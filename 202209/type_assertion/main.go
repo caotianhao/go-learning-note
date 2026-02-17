@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	var x interface{}
+	var x any
 	y := 1.23
 	//把float64赋给空接口，因为空接口可以接收任意类型的值
 	fmt.Printf("x type is %T, x is %v\n", x, x)

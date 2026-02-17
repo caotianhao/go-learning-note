@@ -39,13 +39,13 @@ func (kl *KthLargest) Add(val int) int {
 
 // Push 自己实现的
 // 注意必须是接口类型，需要什么类型自己断言
-func (kl *KthLargest) Push(v interface{}) {
+func (kl *KthLargest) Push(v any) {
 	kl.IntSlice = append(kl.IntSlice, v.(int))
 }
 
 // Pop 返回值类型也必须是接口
 // 若后续需要断言可继续操作，但返回值必须是接口
-func (kl *KthLargest) Pop() interface{} {
+func (kl *KthLargest) Pop() any {
 	res := kl.IntSlice[len(kl.IntSlice)-1]
 	kl.IntSlice = kl.IntSlice[:len(kl.IntSlice)-1]
 	return res

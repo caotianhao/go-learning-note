@@ -26,11 +26,11 @@ func (pq *PriorityQueue) Swap(i, j int) {
 	(*pq)[i], (*pq)[j] = (*pq)[j], (*pq)[i]
 }
 
-func (pq *PriorityQueue) Push(x interface{}) {
+func (pq *PriorityQueue) Push(x any) {
 	*pq = append(*pq, x.(PQStruct))
 }
 
-func (pq *PriorityQueue) Pop() interface{} {
+func (pq *PriorityQueue) Pop() any {
 	o := (*pq)[len(*pq)-1]
 	*pq = (*pq)[:len(*pq)-1]
 	return o

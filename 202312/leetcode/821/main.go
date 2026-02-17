@@ -14,7 +14,7 @@ func shortestToChar(s string, c byte) []int {
 			index = append(index, i)
 		}
 	}
-	for i := 0; i < len(index); i++ {
+	for i := range index {
 		slice821[index[i]] = 0
 	}
 	for i := 0; i < l; i++ {

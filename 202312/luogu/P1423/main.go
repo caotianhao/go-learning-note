@@ -24,7 +24,7 @@ func main() {
 		swim = append(swim, swim[len(swim)-1]*s1423)
 	}
 	dis := float64(0)
-	for i := 0; i < len(swim); i++ {
+	for i := range swim {
 		dis += swim[i]
 		if dis >= m {
 			fmt.Println(i + 1)

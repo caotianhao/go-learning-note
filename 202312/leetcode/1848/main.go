@@ -12,7 +12,7 @@ func getMinDistance(nums []int, target int, start int) int {
 			indexSlice = append(indexSlice, i)
 		}
 	}
-	for i := 0; i < len(indexSlice); i++ {
+	for i := range indexSlice {
 		tmp := int(math.Abs(float64(start) - float64(indexSlice[i])))
 		if tmp < minN {
 			minN = tmp
