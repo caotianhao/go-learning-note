@@ -1,4 +1,4 @@
-package main
+package selectRandomly
 
 import (
 	"math/rand"
@@ -14,7 +14,7 @@ func TestSelectRandomly(t *testing.T) {
 	ch := make(chan int)
 	selectRandomly(ch)
 	var c1, c2, c3 int
-	for i := 0; i < cc; i++ {
+	for range cc {
 		switch <-ch {
 		case 1:
 			c1++

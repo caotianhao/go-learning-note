@@ -1,4 +1,4 @@
-package main
+package cal2
 
 func productCal(n int) int {
 	res := 1
@@ -7,5 +7,3 @@ func productCal(n int) int {
 	}
 	return res
 }
-
-func main() {}

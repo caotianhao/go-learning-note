@@ -1,7 +1,8 @@
-package main
+package seer_restraint
 
 import (
 	"go-cth/model"
+	"slices"
 )
 
 func GetSeerElementRestraint1v1(atk, def model.SeerElem) model.SeerElemKezhiRes {
@@ -9,16 +10,12 @@ func GetSeerElementRestraint1v1(atk, def model.SeerElem) model.SeerElemKezhiRes 
 		return model.SeerElemKezhiResNormal
 	}
 
-	for _, v := range model.SeerElemKe[atk] {
-		if v == def {
-			return model.SeerElemKezhiResKe
-		}
+	if slices.Contains(model.SeerElemKe[atk], def) {
+		return model.SeerElemKezhiResKe
 	}
 
-	for _, v := range model.SeerElemKed[atk] {
-		if v == def {
-			return model.SeerElemKezhiResKed
-		}
+	if slices.Contains(model.SeerElemKed[atk], def) {
+		return model.SeerElemKezhiResKed
 	}
 
 	if zero, ok := model.SeerElemInvalid[atk]; ok && zero == def {
@@ -63,8 +60,4 @@ func singleCalculate(res1, res2 model.SeerElemKezhiRes) model.SeerElemKezhiRes {
 	}
 
 	return (res1 + res2) / div
-}
-
-func main() {
-
 }

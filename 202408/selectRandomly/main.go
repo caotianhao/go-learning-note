@@ -1,4 +1,4 @@
-package main
+package selectRandomly
 
 func selectRandomly(ch chan int) {
 	go func() {

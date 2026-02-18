@@ -1,4 +1,4 @@
-package main
+package cal
 
 func addCal(n int) int {
 	res := 0
@@ -7,5 +7,3 @@ func addCal(n int) int {
 	}
 	return res
 }
-
-func main() {}

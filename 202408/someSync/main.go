@@ -1,4 +1,4 @@
-package main
+package someSync
 
 import (
 	"sync"
@@ -96,5 +96,3 @@ func sync6() int {
 	}
 	return a
 }
-
-func main() {}

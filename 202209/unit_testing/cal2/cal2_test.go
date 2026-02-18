@@ -1,4 +1,4 @@
-package main
+package cal2
 
 import "testing"
 

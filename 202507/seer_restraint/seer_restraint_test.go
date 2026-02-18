@@ -1,4 +1,4 @@
-package main
+package seer_restraint
 
 import (
 	"go-cth/model"
